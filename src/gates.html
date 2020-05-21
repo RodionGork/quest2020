@@ -1,36 +1,24 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="../style/styles.css">
-  <script src="../js/jquery.js"></script>
-  <script src="../js/our-scripts.js"></script>
+    <meta charset="UTF-8">
+    <title>Ворота</title>
+    <link rel="stylesheet" type="text/css" href="../style/styles.css">
 </head>
 
 <body>
-<H1>Ворота</H1>
-
-<img class="main-photo" src="../img/gates.jpg"/>
-
-<div class="main-text">
-    <p>А вот и ворота школы... Как же нам пробраться дальше?<br/>
-        Если у вас есть пропуск, введите его номер:<br/>
-        <input id="propusk"/><button id="register">Жми!</button><br/>
-        иначе вы можете проходить квест на правах <a id="guest" href="#">гостя</a>.</p>
-</div>
-
-<script>
-$('#guest').click(() => {
-    location.href = './gates-guard.html';
-    return false;
-});
-
-$('#register').click(() => {
-    location.href = './gates-guard.html';
-});
-</script>
-
+    <div class="action-space">
+        <img src="../img/gates.JPG" alt="Ворота" class="screen-image card">
+    </div>
+    <div class="interaction-space">
+        <div class="dialog-box card">
+            <p>Наконец-то! Вот и вход. Так, где там мой пропуск?</p>
+        </div>
+        <div class="link">
+            <a href="./general_enter.html">Дальше</a>
+        </div>
+    </div>
 </body>
+
 </html>
