@@ -1,16 +1,43 @@
-.action-space {
-	display: flex;
-	justify-content: center;
+body {
+	background-color: #333333;
+	padding-left: 10%;
 }
 
+.page-space {
+	width: 1000px;
+}
 
+.action-space {
+}
 
 .interaction-space {
-	display: flex;
-	justify-content: space-around;
+	left: 0px;
+}
+
+.corner-map {
+	position: absolute;
+	top: 20px;
+	left: 5%;
+	height: 23%;
+	z-index: 10;
+}
+
+.screen-image {
+	margin-top: 42px;
+	margin-bottom: 17px;
+	height: 500px;
+	z-index: 5;
+	width: 1000px;
+	object-fit: cover;
+}
+
+.dialog-box {
+	background-color: #CCCCCC;
+	padding: 10px;
+	width: 1000px;
+	margin-bottom: 7px;
 }
 
 .next-button {
-	width: 7%;
-	height: 7%;
+	float: right;
 }
