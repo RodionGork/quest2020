@@ -1,0 +1,44 @@
+@media (orientation: landscape) {
+    img {
+        max-width: 75%;
+    }
+}
+@media (orientation: portrait) {
+    img {
+        max-width: 100%;
+    }
+}
+
+body {
+    color:yellow;
+    background:black;
+    text-align:center;
+    font-size:150%;
+    font-family:arial;
+}
+
+a {
+    text-decoration: none;
+    color:red;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+li {
+    display: block;
+}
+
+.secret {
+    display: none;
+}
+
+.wow {
+    color: #0cf;
+}
+
+.offer-style {
+    color: #5cf;
+    font-style: italic;
+}

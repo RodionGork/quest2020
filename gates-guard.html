@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="./styles.css">
+  <script src="./jquery.js"></script>
+  <script src="./our-scripts.js"></script>
+</head>
+
+<body>
+<H1>Фэйс-Контроль</H1>
+
+<img class="main-photo" src="./img/gates-guard.jpg"/>
+
+<div class="main-text">
+    <p>Внезапно появляется Владимир Борисович:<br/>
+        - "В школу пришел? Молодец! А номер школы ты помнишь?"<br/>
+        <input id="number"/><button id="check">Да!</button></p>
+    <p class="secret">А, теперь я тебя вспоминаю :)<br/>Сейчас расскажу что будет дальше...<br/>
+        "Последний звонок" будет проходить в актовом зале, но так просто ты туда не попадешь :)<br/>
+        Ну давай, двигай <a href="./doors.html">к дверям</a>.</p>
+</div>
+
+<script>
+$('#check').click(() => {
+    var num = $('#number').val();
+    if (num != '566') {
+        alert('Да ты похоже шпион :)))\nПробуй еще...');
+        return
+    }
+    $('.secret').show(400);
+});
+</script>
+
+</body>
+</html>
