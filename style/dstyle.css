@@ -1,0 +1,16 @@
+.action-space {
+	display: flex;
+	justify-content: center;
+}
+
+
+
+.interaction-space {
+	display: flex;
+	justify-content: space-around;
+}
+
+.next-button {
+	width: 7%;
+	height: 7%;
+}
