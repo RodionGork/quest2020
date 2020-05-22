@@ -56,6 +56,10 @@ function loadTemplateWithPage(url) {
         preloader.html(body);
         $('.main-image').html(preloader.find('.action-space').html());
         $('.main-image img:first').addClass('card').addClass('screen-image');
+        $('.main-image img').each(function() {
+            var e = $(this);
+            e.attr('src', e.attr('src').replace(/^\.\./, '.'));
+        });
         $('.dialog-box').html(preloader.find('.interaction-space').html());
         $('.dialog-box a.next').addClass('secret');
         $('.action-title').text(title);
