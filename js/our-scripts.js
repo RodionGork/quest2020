@@ -1,3 +1,5 @@
+var usingTemplate = false;
+
 function offerBetterStyle() {
     if (localStorage['style-was-offered'] != undefined) {
         return;
@@ -22,7 +24,7 @@ function onNextButton() {
     var elem = $(this);
     
     var timeLapse = function() {
-        var images = $('.action-space img');
+        var images = $('.action-space .main-image img');
         if (images.size() > 1) {
             var nextImg = $(images[1]);
             $(images[0]).attr('src', (nextImg.attr('src')));
@@ -38,23 +40,51 @@ function onNextButton() {
 }
 
 function switchPage(url) {
-    if (typeof(customSwitchPage) == 'function') {
-        customSwitchPage(url);
+    if (usingTemplate) {
+        loadTemplateWithPage(url);
     } else {
         alert('bla ' + url);
         location.href = url;
     }
 }
 
+function loadTemplateWithPage(url) {
+    var whenLoaded = function(data) {
+        var title = data.replace(/.*\<title\>(.+)\<\/title\>.*/s, '$1')
+        var body = data.replace(/.*\<body\>(.+)\<\/body\>.*/s, '$1');
+        var preloader = $('#preloader');
+        preloader.html(body);
+        $('.main-image').html(preloader.find('.action-space').html());
+        $('.main-image img:first').addClass('card').addClass('screen-image');
+        $('.dialog-box').html(preloader.find('.interaction-space').html());
+        $('.dialog-box a.next').addClass('secret');
+        $('.action-title').text(title);
+        preloader.html('');
+        //$('.next').click(onNextButton);
+    };
+    $.ajax({
+        url: './src/' + url,
+        dataType: 'text',
+        success: whenLoaded
+    });
+}
+
+function nextClicked() {
+    $('.dialog-box a.next:first').click();
+}
+
+function initTemplate() {
+    usingTemplate = true;
+    $('<div id="preloader" class="secret"></div>').appendTo('body');
+    $('.next-button').click(nextClicked);
+    switchPage('Metro_Polytech.html');
+}
+
 $(function(){
-    offerBetterStyle();
-    $('.next').click(onNextButton);
+    if ($('.page-space').size() == 0) {
+        offerBetterStyle();
+    } else {
+        initTemplate();
+    }
+    $(document).on('click', 'a.next', onNextButton);
 });
-
-function updatePreloadedContent(tagClassNameToPreloadIn, fileNameToLoad) {
-    /* ihmo better to use 'classname:last' when load. there's no difference but i like it more */
-}
-
-function updateActionContent(tagClassNameToUpdate) {
-    /* don't know how to realize this but as a last resort use 'classname:first' loads from 'classname:last' */
-}
