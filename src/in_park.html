@@ -5,22 +5,23 @@
     <meta charset="UTF-8">
     <title>Дорога через парк</title>
     <link rel="stylesheet" type="text/css" href="../style/styles.css">
+    <script src="../js/jquery.js"></script>
+    <script src="../js/our-scripts.js"></script>
 </head>
 
 <body>
     <div class="action-space">
-        <img src="../img/in_park.JPG" alt="Знакомая дорожка через парк" class="screen-image card">
-        <p>Должны меняться каждые 0.5с после нажатия на далее</p>
-        <img src="../img/end_of_park_road.JPG" alt="" class="screen-image card">
-        <img src="../img/end_of_park.JPG" alt="" class="screen-image card">
-        <img src="../img/befor_gates.JPG" alt="" class="screen-image card">
+        <img src="../img/in_park.JPG">
+        <img src="../img/end_of_park_road.JPG" class="secret">
+        <img src="../img/end_of_park.JPG" alt="" class="secret">
+        <img src="../img/befor_gates.JPG" alt="" class="secret">
     </div>
     <div class="interaction-space">
         <div class="dialog-box card">
             <p>В парке всё зеленеет, цветёт - красота! Но надо бы бежать</p>
         </div>
         <div class="link">
-            <a href="./gates.html">Дальше</a>
+            <a href="./gates.html" class="next">Дальше</a>
         </div>
     </div>
 </body>
