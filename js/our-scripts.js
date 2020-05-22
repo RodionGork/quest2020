@@ -1,25 +1,5 @@
 var usingTemplate = false;
 
-function offerBetterStyle() {
-    if (localStorage['style-was-offered'] != undefined) {
-        return;
-    }
-    var line = $('<div class="offer-style">Хотите попробовать улучшенное оформление?<br/>'
-        + '<a href="#">ну давай!</a> / <a href="#">исчезни!</a></div>');
-    line.insertBefore('.main-text');
-    line.find('a:first').click(enableBetterStyle);
-    line.find('a:last').click(function() {
-        localStorage['style-was-offered'] = 'yes';
-        line.hide(400);
-        return false;
-    });
-}
-
-function enableBetterStyle() {
-    alert('А над ним пока еще Денис трудиццо...');
-    return false;
-}
-
 function onNextButton() {
     var elem = $(this);
     
@@ -50,8 +30,8 @@ function switchPage(url) {
 
 function loadTemplateWithPage(url) {
     var whenLoaded = function(data) {
-        var title = data.replace(/.*\<title\>(.+)\<\/title\>.*/s, '$1')
-        var body = data.replace(/.*\<body\>(.+)\<\/body\>.*/s, '$1');
+        var title = data.replace(/[\S\s]*\<title\>([\S\s]+)\<\/title\>[\S\s]*/, '$1')
+        var body = data.replace(/[\S\s]*\<body\>([\S\s]+)\<\/body\>[\S\s]*/, '$1');
         var preloader = $('#preloader');
         preloader.html(body);
         $('.main-image').html(preloader.find('.action-space').html());
@@ -86,7 +66,6 @@ function initTemplate() {
 
 $(function(){
     if ($('.page-space').size() == 0) {
-        offerBetterStyle();
     } else {
         initTemplate();
     }
