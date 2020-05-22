@@ -1,41 +1,54 @@
-.page-space {
-	background-color: #333;
-	width: 1000px;
-	margin-left: 10%;
-	margin-right: 10%;
+@media only screen and (min-width: 1024px) {
+	.page-space {
+		background-color: #333;
+		width: 900px;
+		margin: auto;
+		float: center;
+	}
+	.action-space {}
+	.interaction-space {}
+	.action-title {
+		position: absolute;
+		top: 30px;
+		float: right;
+		right: 7%;
+		padding: 12px;
+		font: 1.3em "Fira Sans", sans-serif;
+		z-index: 10;
+	}
+	.corner-map {
+		position: absolute;
+		top: 20px;
+		left: -5%;
+		height: 200px;
+		z-index: 10;
+	}
+	.screen-image {
+		margin-top: -148px; /* 52px - corner-map.height */
+		margin-bottom: 9px;
+		max-height: 508px;
+		z-index: 5;
+		width: 100%;
+		object-fit: cover;
+	}
+	.dialog-box {
+		background-color: #AAA;
+		padding: 10px;
+		width: 100%;
+		margin-bottom: 7px;
+		font: 1.0em "Fira Sans", sans-serif;
+	}
+	.next-button { 
+		float: right;
+		margin-bottom: 7px;
+	}	
 }
 
-.action-space {
+@media only screen and (min-width: 1600px) {
 }
 
-.interaction-space {
-	left: 0px;
+@media only handheld  and (orientation: landscape) {
 }
 
-.corner-map {
-	position: absolute;
-	top: 20px;
-	left: -5%;
-	height: 200px;
-	z-index: 10;
-}
-
-.screen-image {
-	margin-top: -148px; /* 52px - corner-map.height */
-	margin-bottom: 17px;
-	height: 500px;
-	z-index: 5;
-	width: 1000px;
-	object-fit: cover;
-}
-
-.dialog-box {
-	background-color: #AAA;
-	padding: 10px;
-	width: 1000px;
-	margin-bottom: 7px;
-}
-
-.next-button {
-	float: right;
+@media only handheld and (orientation: portrait) { 
 }

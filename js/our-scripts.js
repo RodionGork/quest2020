@@ -50,3 +50,11 @@ $(function(){
     offerBetterStyle();
     $('.next').click(onNextButton);
 });
+
+function updatePreloadedContent(tagClassNameToPreloadIn, fileNameToLoad) {
+    /* ihmo better to use 'classname:last' when load. there's no difference but i like it more */
+}
+
+function updateActionContent(tagClassNameToUpdate) {
+    /* don't know how to realize this but as a last resort use 'classname:first' loads from 'classname:last' */
+}
