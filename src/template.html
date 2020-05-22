@@ -4,8 +4,14 @@
 		<title>Template</title>
 		<link rel="stylesheet" type="text/css" href="../style/dstyle.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<script src="../js/jquery.js"></script>
+    	<script src="../js/our-scripts.js"></script>
 	</head>
 	<body style="background-color: #333">
+		<style type="text/css">
+			.next-button {
+			}
+		</style>
 		<div class="page-space">
 			<div class="action-space">
 				<img src="../img/template_map.jpg" alt="Карта" class="corner-map card">
@@ -18,5 +24,19 @@
 				<button type="button" class="btn btn-primary next-button">Дальше</button>
 			</div>
 		</div>
+		<script>
+			var activeViewIndex = 0;
+			uploadNextView = function () {
+				if (activeViewIndex === 0) {
+					activeViewIndex = 1;
+					$(".dialog-box:first").load("Metro_Polytech.html .dialog-box:first");
+				} else {
+					activeViewIndex = 0;
+				}
+			};
+
+			document.getElementsByClassName('next-button')[0].onclick = uploadNextView;
+		</script>
+
 	</body>
 </html>
