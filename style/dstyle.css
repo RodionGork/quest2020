@@ -1,12 +1,128 @@
+@media all and (orientation: portrait) and (max-width: 1024px) { 
+	.page-space {
+		background-color: #333;
+		width: 100%;
+		margin: auto;
+		float: center;
+	}
+	.action-space {
+		margin: 0px 3%;
+	}
+	.interaction-space {
+		margin: 0px 3%;
+	}
+	.swap-active-image-button {
+		position: absolute;
+		top: 42px;
+		right: 1.5%;
+		float: right;
+		z-index: 10;
+	}
+	.action-title {
+		padding: 12px;
+		font: 2.3em "Fira Sans", sans-serif;
+		float: left;
+		z-index: 10;
+		margin-bottom: 20px;
+	}
+	.corner-map {
+		width: 100%; 
+		margin: 30px auto; 
+		z-index: 10;
+	}
+	.screen-image {
+		margin-bottom: 20px;
+		max-height: 540px;
+		z-index: 5;
+		width: 100%;
+		object-fit: cover;
+	}
+	.dialog-box {
+		padding: 10px;
+		width: 100%;
+		margin-bottom: 12px;
+		font: 2.0em "Fira Sans", sans-serif;
+	}
+	.next-button { 
+		float: right;
+		height: 6%;
+		width: 30%;
+		font-size: 2.4em;
+	}
+}
+
+@media all and (orientation: landscape) and (max-width: 1024px) {
+	.page-space {
+		background-color: #333;
+		width: 100%;
+		display: flex;
+		flex-direction: row-reverse;
+	}
+	.action-space {
+		margin-left: 2%;
+		margin-right: 5%;
+	}
+	.interaction-space {
+		margin-left: 2%;
+		margin-top: 20px;
+		width: 36%;
+	}
+	.swap-active-image-button {
+		position: absolute;
+		display: inline;
+		top: 20px;
+		right: 3%;
+		float: right;
+		z-index: 10;
+	}
+	.action-title {
+		position: absolute;
+		top: 20px;
+		padding: 12px;
+		font: 1.4em "Fira Sans", sans-serif;
+		left: 4%;
+		float: left;
+		z-index: 10;
+	}
+	.corner-map {
+		display: none;
+	}
+	.screen-image {
+		margin-top: 10px;
+		margin-bottom: 9px;
+		max-height: 540px;
+		z-index: 5;
+		width: 100%;
+		object-fit: cover;
+	}
+	.dialog-box {
+		padding: 10px;
+		width: 100%;
+		margin-bottom: 7px;
+		font: 1.0em "Fira Sans", sans-serif;
+	}
+	.next-button { 
+		position: absolute;
+		right: 2%;
+		bottom: 20px;
+		height: 12%;
+		width: 20%;
+		font-size: 2.4em;
+	}
+}
+
 @media only screen and (min-width: 1024px) {
 	.page-space {
 		background-color: #333;
-		width: 900px;
+		width: 70%;
 		margin: auto;
 		float: center;
 	}
 	.action-space {}
 	.interaction-space {}
+	.swap-active-image-button {
+		display: none;
+	}
 	.action-title {
 		position: absolute;
 		top: 30px;
@@ -20,19 +136,18 @@
 		position: absolute;
 		top: 20px;
 		left: -5%;
-		height: 200px;
+		max-height: 180px;
 		z-index: 10;
 	}
 	.screen-image {
-		margin-top: -148px; /* 52px - corner-map.height */
+		margin-top: 10px;
 		margin-bottom: 9px;
-		max-height: 508px;
+		max-height: 540px;
 		z-index: 5;
 		width: 100%;
 		object-fit: cover;
 	}
 	.dialog-box {
-		background-color: #AAA;
 		padding: 10px;
 		width: 100%;
 		margin-bottom: 7px;
@@ -45,10 +160,4 @@
 }
 
 @media only screen and (min-width: 1600px) {
-}
-
-@media only handheld  and (orientation: landscape) {
-}
-
-@media only handheld and (orientation: portrait) { 
 }
