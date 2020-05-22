@@ -29,12 +29,21 @@ function onNextButton() {
             nextImg.remove();
             setTimeout(timeLapse, 700);
         } else {
-            location.href = elem.attr('href');
+            switchPage(elem.attr('href'));
         }
     }
     
     timeLapse();
     return false;
+}
+
+function switchPage(url) {
+    if (typeof(customSwitchPage) == 'function') {
+        customSwitchPage(url);
+    } else {
+        alert('bla ' + url);
+        location.href = url;
+    }
 }
 
 $(function(){
