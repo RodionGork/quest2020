@@ -18,6 +18,26 @@ function enableBetterStyle() {
     return false;
 }
 
+function onNextButton() {
+    var elem = $(this);
+    
+    var timeLapse = function() {
+        var images = $('.action-space img');
+        if (images.size() > 1) {
+            var nextImg = $(images[1]);
+            $(images[0]).attr('src', (nextImg.attr('src')));
+            nextImg.remove();
+            setTimeout(timeLapse, 700);
+        } else {
+            location.href = elem.attr('href');
+        }
+    }
+    
+    timeLapse();
+    return false;
+}
+
 $(function(){
     offerBetterStyle();
+    $('.next').click(onNextButton);
 });

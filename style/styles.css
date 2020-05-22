@@ -1,11 +1,13 @@
 @media (orientation: landscape) {
     img {
         max-width: 75%;
+        width: 75%;
     }
 }
 @media (orientation: portrait) {
     img {
         max-width: 100%;
+        width: 100%;
     }
 }
 
