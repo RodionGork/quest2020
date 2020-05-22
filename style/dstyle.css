@@ -1,10 +1,8 @@
-body {
-	background-color: #333333;
-	padding-left: 10%;
-}
-
 .page-space {
+	background-color: #333;
 	width: 1000px;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 .action-space {
@@ -17,13 +15,13 @@ body {
 .corner-map {
 	position: absolute;
 	top: 20px;
-	left: 5%;
-	height: 23%;
+	left: -5%;
+	height: 200px;
 	z-index: 10;
 }
 
 .screen-image {
-	margin-top: 42px;
+	margin-top: -148px; /* 52px - corner-map.height */
 	margin-bottom: 17px;
 	height: 500px;
 	z-index: 5;
@@ -32,7 +30,7 @@ body {
 }
 
 .dialog-box {
-	background-color: #CCCCCC;
+	background-color: #AAA;
 	padding: 10px;
 	width: 1000px;
 	margin-bottom: 7px;
