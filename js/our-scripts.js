@@ -83,7 +83,12 @@ function initTemplate() {
     usingTemplate = true;
     $('<div id="preloader" class="secret"></div>').appendTo('body');
     $('.next-button').click(nextClicked);
-    loadTemplateWithPage('Metro_Polytech.html', true);
+    var pageName = 'Metro_Polytech.html';
+    var shortcut = location.href.search('#');
+    if (shortcut > -1) {
+        pageName = location.href.substr(shortcut + 1) + '.html';
+    }
+    loadTemplateWithPage(pageName, true);
 }
 
 $(function(){
