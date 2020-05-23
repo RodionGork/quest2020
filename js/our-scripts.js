@@ -6,10 +6,13 @@ function onNextButton() {
     var timeLapse = function() {
         var images = $('.action-space .main-image img');
         if (images.size() > 1) {
+            var curImg = $(images[0]);
             var nextImg = $(images[1]);
-            $(images[0]).attr('src', (nextImg.attr('src')));
-            nextImg.remove();
-            setTimeout(timeLapse, 700);
+            curImg.fadeTo(500, 0.3, function() {
+                curImg.attr('src', (nextImg.attr('src')));
+                nextImg.remove();
+                curImg.fadeTo(200, 1.0, timeLapse);
+            });
         } else {
             switchPage(elem.attr('href'));
         }
@@ -28,29 +31,38 @@ function switchPage(url) {
     }
 }
 
-function loadTemplateWithPage(url) {
+function loadTemplateWithPage(url, nowait) {
     var whenLoaded = function(data) {
         var title = data.replace(/[\S\s]*\<title\>([\S\s]+)\<\/title\>[\S\s]*/, '$1')
         var body = data.replace(/[\S\s]*\<body\>([\S\s]+)\<\/body\>[\S\s]*/, '$1');
         var preloader = $('#preloader');
         preloader.html(body);
-        $('.main-image').html(preloader.find('.action-space').html());
-        $('.main-image img:first').addClass('card').addClass('screen-image');
-        $('.main-image img').each(function() {
-            var e = $(this);
-            e.attr('src', e.attr('src').replace(/^\.\./, '.'));
-        });
-        $('.dialog-box').html(preloader.find('.interaction-space').html());
-        $('.dialog-box a.next').addClass('secret');
-        $('.action-title').text(title);
-        preloader.html('');
-        //$('.next').click(onNextButton);
+        if (nowait) {
+            setupLoadedPage(preloader, title, body);
+        } else {
+            setTimeout(function() {
+                setupLoadedPage(preloader, title, body);
+            }, 500);
+        }
     };
     $.ajax({
         url: './src/' + url,
         dataType: 'text',
         success: whenLoaded
     });
+}
+
+function setupLoadedPage(preloader, title, body) {
+    $('.main-image').html(preloader.find('.action-space').html());
+    $('.main-image img:first').addClass('card').addClass('screen-image');
+    $('.main-image img').each(function() {
+        var e = $(this);
+        e.attr('src', e.attr('src').replace(/^\.\./, '.'));
+    });
+    $('.dialog-box').html(preloader.find('.interaction-space').html());
+    $('.dialog-box a.next').addClass('secret');
+    $('.action-title').text(title);
+    preloader.html('');
 }
 
 function nextClicked() {
@@ -61,7 +73,7 @@ function initTemplate() {
     usingTemplate = true;
     $('<div id="preloader" class="secret"></div>').appendTo('body');
     $('.next-button').click(nextClicked);
-    switchPage('Metro_Polytech.html');
+    loadTemplateWithPage('Metro_Polytech.html', true);
 }
 
 $(function(){
