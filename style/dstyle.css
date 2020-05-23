@@ -138,8 +138,15 @@ body {
 		display: flex;
 		flex-direction: column;
 	}
-	.action-space {}
-	.interaction-space {}
+	.action-space {
+		position: fixed;
+		width: 70%;
+	}
+	.interaction-space {
+		margin-top: 80vh;
+		margin-bottom: 10vh;
+		z-index: 20;
+	}
 	.swap-active-image-button {
 		display: none;
 	}
