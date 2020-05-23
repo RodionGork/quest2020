@@ -59,6 +59,7 @@ function loadTemplateWithPage(url, nowait) {
 function setupLoadedPage(preloader, title, body) {
     $('.main-image').html(preloader.find('.action-space').html());
     $('.main-image img:first').addClass('card').addClass('screen-image');
+    preloader.find('.interaction-space p:not(:first)').addClass('secret');
     $('.dialog-box').html(preloader.find('.interaction-space').html());
     $('.dialog-box a.next').addClass('secret');
     $('.action-title').text(title);
@@ -66,7 +67,16 @@ function setupLoadedPage(preloader, title, body) {
 }
 
 function nextClicked() {
-    $('.dialog-box a.next:first').click();
+    var hidden = $('.dialog-box p.secret:first');
+    if (hidden.size() > 0) {
+        hidden.removeClass('secret');
+        var ps = $('.dialog-box p:not(.secret');
+        if (ps.size() > 2) {
+            ps.first().remove();
+        }
+    } else {
+        $('.dialog-box a.next:first').click();
+    }
 }
 
 function initTemplate() {
