@@ -40,9 +40,9 @@ function loadTemplateWithPage(url, nowait) {
         if (nowait) {
             setupLoadedPage(preloader, title, body);
         } else {
-            setTimeout(function() {
+            $('.main-image img:first').fadeTo(700, 0, function() {
                 setupLoadedPage(preloader, title, body);
-            }, 500);
+            });
         }
     };
     $.ajax({
