@@ -37,6 +37,10 @@ function loadTemplateWithPage(url, nowait) {
         var body = data.replace(/[\S\s]*\<body\>([\S\s]+)\<\/body\>[\S\s]*/, '$1');
         var preloader = $('#preloader');
         preloader.html(body);
+        preloader.find('img').each(function() {
+            var e = $(this);
+            e.attr('src', e.attr('src').replace(/^\.\./, '.'));
+        });
         if (nowait) {
             setupLoadedPage(preloader, title, body);
         } else {
@@ -55,10 +59,6 @@ function loadTemplateWithPage(url, nowait) {
 function setupLoadedPage(preloader, title, body) {
     $('.main-image').html(preloader.find('.action-space').html());
     $('.main-image img:first').addClass('card').addClass('screen-image');
-    $('.main-image img').each(function() {
-        var e = $(this);
-        e.attr('src', e.attr('src').replace(/^\.\./, '.'));
-    });
     $('.dialog-box').html(preloader.find('.interaction-space').html());
     $('.dialog-box a.next').addClass('secret');
     $('.action-title').text(title);
