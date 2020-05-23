@@ -1,6 +1,22 @@
-@media all and (orientation: portrait) and (max-width: 1024px) { 
+ 
+html {
+	 background-color: #333;
+}
+
+body {
+	background-color: #333;
+}
+
+.card {
+	background-color: #EEE;
+}
+
+.page-space {
+	background-color: #333;
+}
+
+@media all and (orientation: portrait) and (max-device-width: 1024px) { 
 	.page-space {
-		background-color: #333;
 		width: 100%;
 		margin: auto;
 		float: center;
@@ -26,13 +42,14 @@
 		margin-bottom: 20px;
 	}
 	.corner-map {
-		width: 100%; 
+		width: 100%;
+		max-height: 30vh; 
 		margin: 30px auto; 
 		z-index: 10;
+		object-fit: cover;
 	}
 	.screen-image {
 		margin-bottom: 20px;
-		max-height: 540px;
 		z-index: 5;
 		width: 100%;
 		object-fit: cover;
@@ -40,20 +57,20 @@
 	.dialog-box {
 		padding: 10px;
 		width: 100%;
-		margin-bottom: 12px;
+		margin-bottom: 20px;
 		font: 2.0em "Fira Sans", sans-serif;
 	}
 	.next-button { 
+		display: block;
 		float: right;
 		height: 6%;
 		width: 30%;
-		font-size: 2.4em;
+		font-size: 2.4em;	
 	}
 }
 
-@media all and (orientation: landscape) and (max-width: 1024px) {
+@media all and (orientation: landscape) and (max-device-width: 1024px) {
 	.page-space {
-		background-color: #333;
 		width: 100%;
 		display: flex;
 		flex-direction: row-reverse;
@@ -61,6 +78,7 @@
 	.action-space {
 		margin-left: 2%;
 		margin-right: 5%;
+		margin-top: 20px;
 	}
 	.interaction-space {
 		margin-left: 2%;
@@ -68,27 +86,28 @@
 		width: 36%;
 	}
 	.swap-active-image-button {
-		position: absolute;
-		display: inline;
+		position: fixed;
 		top: 20px;
-		right: 3%;
+		right: 2%;
 		float: right;
 		z-index: 10;
 	}
 	.action-title {
-		position: absolute;
+		position: fixed;
 		top: 20px;
 		padding: 12px;
-		font: 1.4em "Fira Sans", sans-serif;
-		left: 4%;
+		font: 1.2em "Fira Sans", sans-serif;
+		left: 39%;
 		float: left;
 		z-index: 10;
 	}
 	.corner-map {
-		display: none;
+		position: fixed;
+		width: 0px;
+		height: 0px;
 	}
 	.screen-image {
-		margin-top: 10px;
+		margin-top: 30px;
 		margin-bottom: 9px;
 		max-height: 540px;
 		z-index: 5;
@@ -107,16 +126,17 @@
 		bottom: 20px;
 		height: 12%;
 		width: 20%;
-		font-size: 2.4em;
+		font-size: 1.6em;
 	}
 }
 
 @media only screen and (min-width: 1024px) {
 	.page-space {
-		background-color: #333;
 		width: 70%;
-		margin: auto;
+		margin: 10px auto;
 		float: center;
+		display: flex;
+		flex-direction: column;
 	}
 	.action-space {}
 	.interaction-space {}
@@ -124,23 +144,25 @@
 		display: none;
 	}
 	.action-title {
-		position: absolute;
-		top: 30px;
+		position: fixed;
 		float: right;
-		right: 7%;
+		top: 20px;
+		right: 17%;
 		padding: 12px;
 		font: 1.3em "Fira Sans", sans-serif;
 		z-index: 10;
 	}
 	.corner-map {
-		position: absolute;
+		position: fixed;
 		top: 20px;
-		left: -5%;
+		left: 10%;
 		max-height: 180px;
 		z-index: 10;
 	}
 	.screen-image {
-		margin-top: 10px;
+		top: 0px;
+		position: relative;
+		margin-top: 40px;
 		margin-bottom: 9px;
 		max-height: 540px;
 		z-index: 5;
