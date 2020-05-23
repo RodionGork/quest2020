@@ -62,6 +62,7 @@ function setupLoadedPage(preloader, title, body) {
     preloader.find('.interaction-space p:not(:first)').addClass('secret');
     $('.dialog-box').html(preloader.find('.interaction-space').html());
     $('.dialog-box a.next').addClass('secret');
+    $('.dialog-box p.quiz').each(decorateQuiz);
     $('.action-title').text(title);
     preloader.html('');
 }
@@ -70,6 +71,9 @@ function nextClicked() {
     var hidden = $('.dialog-box p.secret:first');
     if (hidden.size() > 0) {
         hidden.removeClass('secret');
+        if (hidden.hasClass('quiz')) {
+            hidden.prevAll().remove();
+        }
         var ps = $('.dialog-box p:not(.secret');
         if (ps.size() > 2) {
             ps.first().remove();
@@ -77,6 +81,12 @@ function nextClicked() {
     } else {
         $('.dialog-box a.next:first').click();
     }
+}
+
+function decorateQuiz() {
+    var quiz = $(this);
+    quiz.find('span').prepend('<input type="radio"/>').append('<br/>');
+    quiz.addClass('decorated');
 }
 
 function initTemplate() {
@@ -97,4 +107,5 @@ $(function(){
         initTemplate();
     }
     $(document).on('click', 'a.next', onNextButton);
+    $('p.quiz:not(.decorated)').each(decorateQuiz);
 });
