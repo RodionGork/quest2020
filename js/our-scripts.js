@@ -33,7 +33,7 @@ function switchPage(url) {
 
 function loadTemplateWithPage(url, nowait) {
     var whenLoaded = function(data) {
-        var title = data.replace(/[\S\s]*\<title\>([\S\s]+)\<\/title\>[\S\s]*/, '$1')
+        var title = data.replace(/[\S\s]*\<title\>([\S\s]*)\<\/title\>[\S\s]*/, '$1')
         var body = data.replace(/[\S\s]*\<body\>([\S\s]+)\<\/body\>[\S\s]*/, '$1');
         var preloader = $('#preloader');
         preloader.html(body);
@@ -68,6 +68,14 @@ function setupLoadedPage(preloader, title, body) {
 }
 
 function nextClicked() {
+    var current = $('.dialog-box p:not(.secret):first');
+    if (current.hasClass('quiz')) {
+        var ok = current.find('input:checked').parent('span').hasClass('right');
+        if (!ok) {
+            alert('Не-е-е, подумай еще!');
+            return;
+        }
+    }
     var hidden = $('.dialog-box p.secret:first');
     if (hidden.size() > 0) {
         hidden.removeClass('secret');
@@ -85,7 +93,8 @@ function nextClicked() {
 
 function decorateQuiz() {
     var quiz = $(this);
-    quiz.find('span').prepend('<input type="radio"/>').append('<br/>');
+    var group = 'name' + quiz.prevAll().size();
+    quiz.find('span').prepend('<input type="radio" name="' + group + '"/>').append('<br/>');
     quiz.addClass('decorated');
 }
 
