@@ -82,10 +82,6 @@ function nextClicked() {
         if (hidden.hasClass('quiz')) {
             hidden.prevAll().remove();
         }
-        var ps = $('.dialog-box p:not(.secret');
-        if (ps.size() > 2) {
-            ps.first().remove();
-        }
     } else {
         $('.dialog-box a.next:first').click();
     }
