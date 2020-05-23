@@ -182,3 +182,7 @@ body {
 
 @media only screen and (min-width: 1600px) {
 }
+
+.secret {
+    display: none;
+}
