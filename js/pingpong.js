@@ -11,6 +11,13 @@ var record = 0;
 var count = 0;
 var Storage_size = localStorage.length;
 
+const block = document.querySelector('.block')
+var interval;
+var count = 0;
+    
+var btnUp = document.getElementById('up');
+var btnDown = document.getElementById('down');
+
 if (Storage_size > 0) { record = localStorage.getItem('record'); } 
 else { localStorage.setItem('record',0); }
 
@@ -37,6 +44,30 @@ const ball = {
   dx: ballSpeed,
   dy: -ballSpeed
 };
+
+btnUp.addEventListener('mousedown', event => {
+  rightPaddle.dy = -paddleSpeed;
+  interval = setInterval(() => {
+    count++
+    console.log(count)
+  }, 50);
+})
+btnUp.addEventListener('mouseup', event => {
+  rightPaddle.dy = 0;
+  clearInterval(interval);
+})
+btnDown.addEventListener('mousedown', event => {
+  rightPaddle.dy = -paddleSpeed;
+  interval = setInterval(() => {
+    count++
+    console.log(count)
+  }, 50);
+})
+btnDown.addEventListener('mouseup', event => {
+  rightPaddle.dy = 0;
+  clearInterval(interval);
+})
+
 
 function collides(obj1, obj2) {
   return obj1.x < obj2.x + obj2.width &&

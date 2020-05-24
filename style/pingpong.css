@@ -1,8 +1,73 @@
+html, body {
+  	height: 100%;
+  	margin: 0;
+	background: black;
+}
 @media all and (orientation: portrait) and (max-device-width: 1024px) { 
+	body {
+	  	display: flex;
+	  	align-items: center;
+	  	justify-content: center;
+	}
+	#control-panel {
+		margin-top: 10vh;
+		display: flex;
+		justify-content: space-around;
+	}
+	button {
+		width: 30vw;
+		height: 15vw;
+	}
+	#up {
+		font: 2.9em "Fira Sans", sans-serif;
+	}
+	#down {
+		font: 2.9em "Fira Sans", sans-serif;
+	}
 }
 
 @media all and (orientation: landscape) and (max-device-width: 1024px) {
+	body {
+	  	display: flex;
+	  	align-items: center;
+	  	justify-content: center;
+	}
+	#page {
+		width: 90%;
+		display: flex;
+		justify-content: space-around;
+		flex-direction: row;
+	}
+	#game {
+		width: 90vh;
+		height: 70vh;
+	}
+	#control-panel {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: column;
+	}
+	button {
+		width: 25vw;
+		height: 15vw;
+	}
+	#up {
+		margin-bottom: 10vh;
+		font: 2.9em "Fira Sans", sans-serif;
+	}
+	#down {
+		font: 2.9em "Fira Sans", sans-serif;
+	}
 }
 
 @media only screen and (min-width: 1024px) {
+	body {
+	  	display: flex;
+	  	align-items: center;
+	  	justify-content: center;
+	}
+	#control-panel { display: none; }
+	#up { display: none; }
+	#down { display: none; }
 }
