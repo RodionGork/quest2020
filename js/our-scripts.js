@@ -29,7 +29,6 @@ function switchPage(url) {
     if (usingTemplate) {
         loadTemplateWithPage(url);
     } else {
-        alert('bla ' + url);
         location.href = url;
     }
 }
@@ -77,7 +76,9 @@ function nextClicked() {
     if (current.hasClass('quiz')) {
         var ok = current.find('input:checked').parent('span').hasClass('right');
         if (!ok) {
-            alert('Не-е-е, подумай еще!');
+            var fails = $('.quiz-failures span').size();
+            var span = $($('.quiz-failures span').get(Math.floor(Math.random() * fails)));
+            span.show(500).delay(1500).hide(500);
             return;
         }
     }

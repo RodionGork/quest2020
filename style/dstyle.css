@@ -14,6 +14,11 @@ body {
 	background-color: #333;
 }
 
+.quiz-failures span {
+    color: red;
+    display: none;
+}
+
 @media all and (orientation: portrait) and (max-device-width: 1024px) { 
 	.page-space {
 		width: 100%;
