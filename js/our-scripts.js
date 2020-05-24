@@ -76,8 +76,12 @@ function nextClicked() {
     if (current.hasClass('quiz')) {
         var ok = current.find('input:checked').parent('span').hasClass('right');
         if (!ok) {
-            var fails = $('.quiz-failures span').size();
-            var span = $($('.quiz-failures span').get(Math.floor(Math.random() * fails)));
+            var spans = current.find('.quiz-failures span');
+            if (spans.size() == 0) {
+                spans = $('.dialog-box > .quiz-failures span');
+            }
+            var fails = spans.size();
+            var span = $(spans.get(Math.floor(Math.random() * fails)));
             span.show(500).delay(1500).hide(500);
             return;
         }
@@ -97,7 +101,7 @@ function nextClicked() {
 function decorateQuiz() {
     var quiz = $(this);
     var group = 'name' + quiz.prevAll().size();
-    quiz.find('span').prepend('<input type="radio" name="' + group + '"/>').append('<br/>');
+    quiz.children('span:not(.quiz-failures)').prepend('<input type="radio" name="' + group + '"/>').append('<br/>');
     quiz.addClass('decorated');
 }
 
