@@ -9,6 +9,7 @@ function onNextButton() {
             var curImg = $(images[0]);
             var nextImg = $(images[1]);
             curImg.fadeTo(500, 0.3, function() {
+                var t = $('.dialog-box p').text();
                 curImg.attr('src', (nextImg.attr('src')));
                 nextImg.remove();
                 curImg.fadeTo(200, 1.0, timeLapse);
@@ -18,6 +19,8 @@ function onNextButton() {
         }
     }
     
+    $('.dialog-box').hide();
+    $('.next-button').hide();
     timeLapse();
     return false;
 }
@@ -26,7 +29,6 @@ function switchPage(url) {
     if (usingTemplate) {
         loadTemplateWithPage(url);
     } else {
-        alert('bla ' + url);
         location.href = url;
     }
 }
@@ -65,6 +67,8 @@ function setupLoadedPage(preloader, title, body) {
     $('.dialog-box p.quiz').each(decorateQuiz);
     $('.action-title').text(title);
     preloader.html('');
+    $('.next-button').show();
+    $('.dialog-box').show();
 }
 
 function nextClicked() {
@@ -72,19 +76,22 @@ function nextClicked() {
     if (current.hasClass('quiz')) {
         var ok = current.find('input:checked').parent('span').hasClass('right');
         if (!ok) {
-            alert('Не-е-е, подумай еще!');
+            var fails = $('.quiz-failures span').size();
+            var span = $($('.quiz-failures span').get(Math.floor(Math.random() * fails)));
+            span.show(500).delay(1500).hide(500);
             return;
         }
     }
     var hidden = $('.dialog-box p.secret:first');
     if (hidden.size() > 0) {
-        hidden.removeClass('secret');
+        hidden.show(300).removeClass('secret');
         if (hidden.hasClass('quiz')) {
             hidden.prevAll().remove();
         }
     } else {
         $('.dialog-box a.next:first').click();
     }
+    window.scrollTo(0,document.body.scrollHeight);
 }
 
 function decorateQuiz() {
