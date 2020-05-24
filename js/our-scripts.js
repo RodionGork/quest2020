@@ -72,7 +72,15 @@ function setupLoadedPage(preloader, title, body) {
 }
 
 function nextClicked() {
-    var current = $('.dialog-box p:not(.secret):first');
+    var current = $('.dialog-box p:not(.secret):last');
+    var textbox = current.find('input[type=text]');
+    if (textbox.size() > 0) {
+        if (textbox.val().toLowerCase() == textbox.attr('data-answer').toLowerCase()) {
+            $('<span/>').text(' ' + textbox.attr('data-ok')).insertAfter(textbox).css('color', 'green');
+        } else {
+            $('<span/>').text(' ' + textbox.attr('data-bad')).insertAfter(textbox).css('color', 'red');
+        }
+    }
     if (current.hasClass('quiz')) {
         var ok = current.find('input:checked').parent('span').hasClass('right');
         if (!ok) {
