@@ -1,0 +1,197 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: #333;
+}
+
+.card {
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, .125);
+	border-radius: .25rem;
+}
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn-primary {
+	color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+@media all and (orientation: portrait) and (max-device-width: 1024px) {
+	#page {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	#paint {
+		position: fixed;
+		height: 60vh;
+		width: 100vw;
+		top: 0px;
+		left: 0px;
+		z-index: 10;
+	}
+	#right-hand {
+		width: 60vw;
+		height: 20vh;
+		padding: 1vw 1vh;
+	}
+	#dialog-image {
+		position: fixed;
+		left: 2vh;
+		top: 62vh;
+		width: 30vw;
+		max-height: 35vh; 
+		background-color: #AAA;
+		object-fit: cover;
+	}
+	#interaction-box {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		padding: 1%;
+		width: 63vw;
+		margin-top: 61.5vh;
+	}
+	#dialog {
+		background-color: #EEE;
+		padding: 12px 18px;
+		font: 1.8em "Fira Sans", sans-serif; 
+		margin-bottom: 20px;
+		z-index: 0;
+	}
+	#finish-button {
+		font: 1.3em "Fira Sans", sans-serif;
+		float: right;
+		width: 15vw;
+	}
+}
+
+@media all and (orientation: landscape) and (max-device-width: 1024px) {
+	#page {
+		display: flex;
+		flex-direction: row;
+		
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	#paint {
+		position: fixed;
+		height: 100%;
+		width: 75%;
+		top: 0px;
+		left: 0px;
+	}
+	#right-hand {
+		width: 20%;
+		height: 90%;
+		padding: 1%;
+	}
+	#dialog-image {
+		position: fixed;
+		top: 1%;
+		right: 1%;
+		width: 22.8%;
+		max-height: 50vh; 
+		background-color: #AAA;
+		object-fit: cover;
+	}
+	#interaction-box {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		padding: 1%;
+		width: 23.1%;
+		margin-top: 58vh;
+	}
+	#dialog {
+		background-color: #EEE;
+		padding: 10px 8px;
+		font: 0.9em "Fira Sans", sans-serif; 
+		margin-bottom: 20px;
+	}
+	#finish-button {
+		font: 1.3em "Fira Sans", sans-serif;
+		float: right;
+		width: 15vw;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	#page {
+		display: flex;
+		flex-direction: row;
+		
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	#paint {
+		position: fixed;
+		height: 100%;
+		width: 75%;
+		top: 0px;
+		left: 0px;
+	}
+	#right-hand {
+		width: 20%;
+		height: 90%;
+		padding: 1%;
+	}
+	#dialog-image {
+		position: fixed;
+		top: 3%;
+		right: 3%;
+		width: 19%;
+		max-height: 50vh; 
+		background-color: #AAA;
+		object-fit: cover;
+	}
+	#interaction-box {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		padding: 1%;
+		width: 23.1%;
+		margin-top: 58vh;
+	}
+	#dialog {
+		background-color: #EEE;
+		padding: 14px 16px;
+		font: 1.2em "Fira Sans", sans-serif; 
+		margin-bottom: 20px;
+	}
+	#finish-button {
+		font: 1.2em "Fira Sans", sans-serif;
+		float: right;
+	}
+}
