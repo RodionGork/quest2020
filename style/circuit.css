@@ -1,0 +1,93 @@
+html {
+	background-color: #333;
+}
+
+@media all and (orientation: portrait) and (max-device-width: 1024px) { 
+	body {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	img {
+		height: 15vw;
+		width: 15vw;
+		object-fit: cover;
+	}
+	.circuit-space {
+		margin: 15vw 0px;
+		width: 60vw;
+		height: 60vw;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+	}
+	#start {
+		margin-top: 15vw;
+	}
+	#end {
+		display: flex;
+		align-self: flex-end;
+		margin-bottom: 15vw;
+	}
+}
+
+@media all and (orientation: landscape) and (max-device-width: 1024px) {
+	body {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	img {
+		height: 20vh;
+		width: 20vh;
+		object-fit: cover;
+	}
+	.circuit-space {
+		margin: 10vh 0px;
+		width: 80vh;
+		height: 80vh;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+	}
+	#start {
+		margin-top: 10vh;
+	}
+	#end {
+		display: flex;
+		align-self: flex-end;
+		margin-bottom: 10vh;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	body {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	img {
+		height: 20vh;
+		width: 20vh;
+		object-fit: cover;
+	}
+	.circuit-space {
+		margin: 10vh 0px;
+		width: 80vh;
+		height: 80vh;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+	}
+	#start {
+		margin-top: 10vh;
+	}
+	#end {
+		display: flex;
+		align-self: flex-end;
+		margin-bottom: 10vh;
+	}
+}
