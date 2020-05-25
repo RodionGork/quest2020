@@ -1,22 +1,10 @@
 var usingTemplate = false;
 
-function onNextButton() {
+function runTimeLapse() {
     var elem = $(this);
     
     var timeLapse = function() {
-        var images = $('.action-space .main-image img');
-        if (images.size() > 1) {
-            var curImg = $(images[0]);
-            var nextImg = $(images[1]);
-            curImg.fadeTo(500, 0.3, function() {
-                var t = $('.dialog-box p').text();
-                curImg.attr('src', (nextImg.attr('src')));
-                playAudioIfAny(nextImg.attr('sound'));
-                nextImg.remove();
-                playAudioIfAny();
-                curImg.fadeTo(200, 1.0, timeLapse);
-            });
-        } else {
+        if (!switchImage(timeLapse)) {
             switchPage(elem.attr('href'));
         }
     }
@@ -64,7 +52,7 @@ function setupLoadedPage(preloader, title, body) {
     $('.main-image').html(preloader.find('.action-space').html());
     var firstImage = $('.main-image img:first');
     firstImage.addClass('card').addClass('screen-image');
-    playAudioIfAny(firstImage.attr('sound'));
+    playAudioIfAny(firstImage);
     preloader.find('.interaction-space p:not(:first)').addClass('secret');
     $('.dialog-box').html(preloader.find('.interaction-space').html());
     $('.dialog-box a.next').addClass('secret');
@@ -75,7 +63,8 @@ function setupLoadedPage(preloader, title, body) {
     $('.dialog-box').show();
 }
 
-function playAudioIfAny(sound) {
+function playAudioIfAny(tag) {
+    var sound = tag.attr('sound');
     if (typeof(sound) == 'undefined') {
         return;
     }
@@ -107,14 +96,38 @@ function nextClicked() {
     }
     var hidden = $('.dialog-box p.secret:first');
     if (hidden.size() > 0) {
-        hidden.show(300).removeClass('secret');
-        if (hidden.hasClass('quiz')) {
-            hidden.prevAll().remove();
+        var f = function() {
+            hidden.show(300).removeClass('secret');
+            if (hidden.hasClass('quiz')) {
+                hidden.prevAll().remove();
+            }
+        }
+        if (hidden.attr('next-slide') === 'true') {
+            switchImage(f);
+        } else {
+            f();
         }
     } else {
         $('.dialog-box a.next:first').click();
     }
     window.scrollTo(0,document.body.scrollHeight);
+}
+
+function switchImage(f) {
+    var images = $('.action-space .main-image img');
+    if (images.size() < 2) {
+        return false;
+    }
+    var curImg = $(images[0]);
+    var nextImg = $(images[1]);
+    curImg.fadeTo(500, 0.3, function() {
+        var t = $('.dialog-box p').text();
+        curImg.attr('src', (nextImg.attr('src')));
+        playAudioIfAny(nextImg);
+        nextImg.remove();
+        curImg.fadeTo(200, 1.0, () => {if (typeof(f) == 'function') f()});
+    });
+    return true;
 }
 
 function decorateQuiz() {
@@ -141,6 +154,6 @@ $(function(){
     } else {
         initTemplate();
     }
-    $(document).on('click', 'a.next', onNextButton);
+    $(document).on('click', 'a.next', runTimeLapse);
     $('p.quiz:not(.decorated)').each(decorateQuiz);
 });
