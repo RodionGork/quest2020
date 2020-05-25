@@ -11,7 +11,9 @@ function onNextButton() {
             curImg.fadeTo(500, 0.3, function() {
                 var t = $('.dialog-box p').text();
                 curImg.attr('src', (nextImg.attr('src')));
+                playAudioIfAny(nextImg.attr('sound'));
                 nextImg.remove();
+                playAudioIfAny();
                 curImg.fadeTo(200, 1.0, timeLapse);
             });
         } else {
@@ -60,7 +62,9 @@ function loadTemplateWithPage(url, nowait) {
 
 function setupLoadedPage(preloader, title, body) {
     $('.main-image').html(preloader.find('.action-space').html());
-    $('.main-image img:first').addClass('card').addClass('screen-image');
+    var firstImage = $('.main-image img:first');
+    firstImage.addClass('card').addClass('screen-image');
+    playAudioIfAny(firstImage.attr('sound'));
     preloader.find('.interaction-space p:not(:first)').addClass('secret');
     $('.dialog-box').html(preloader.find('.interaction-space').html());
     $('.dialog-box a.next').addClass('secret');
@@ -69,6 +73,13 @@ function setupLoadedPage(preloader, title, body) {
     preloader.html('');
     $('.next-button').show();
     $('.dialog-box').show();
+}
+
+function playAudioIfAny(sound) {
+    if (typeof(sound) == 'undefined') {
+        return;
+    }
+    new Audio('./sounds/' + sound).play();
 }
 
 function nextClicked() {
