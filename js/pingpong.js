@@ -45,29 +45,43 @@ const ball = {
   dy: -ballSpeed
 };
 
-btnUp.addEventListener('mousedown', event => {
-  rightPaddle.dy = -paddleSpeed;
-  interval = setInterval(() => {
-    count++
-    console.log(count)
-  }, 50);
-})
-btnUp.addEventListener('mouseup', event => {
-  rightPaddle.dy = 0;
-  clearInterval(interval);
-})
-btnDown.addEventListener('mousedown', event => {
-  rightPaddle.dy = -paddleSpeed;
-  interval = setInterval(() => {
-    count++
-    console.log(count)
-  }, 50);
-})
-btnDown.addEventListener('mouseup', event => {
-  rightPaddle.dy = 0;
-  clearInterval(interval);
-})
+btnUp.addEventListener('mousedown', event => { moveUserPaddle(-1, false) })
+btnUp.addEventListener('mouseup', event => { moveUserPaddle(0, true) })
+btnDown.addEventListener('mousedown', event => { moveUserPaddle(1, false) })
+btnDown.addEventListener('mouseup', event => { moveUserPaddle(0, true) })
+canvas.addEventListener('mousedown', onMouseDown)
+canvas.addEventListener('mouseup', onMouseUp)
+canvas.addEventListener('touchstart', event => { onMouseDown(event.touches[0]) })
+canvas.addEventListener('touchend', onMouseUp)
 
+function onMouseDown(event) {
+  var pt = getCursorPosition(event);
+  var dir = Math.floor(pt.y * 3 / canvas.height - 1);
+  if (dir != 0) {
+    moveUserPaddle(dir, false);
+  }
+}
+
+function onMouseUp(event) {
+  if (rightPaddle.dy != 0) {
+    moveUserPaddle(0, stop);
+  }
+}
+
+function getCursorPosition(event) {
+    var rect = canvas.getBoundingClientRect()
+    var x = event.clientX - rect.left
+    var y = event.clientY - rect.top
+    return {x: x, y: y};
+}
+
+function moveUserPaddle(dir, stop) {
+  if (!stop) {
+    rightPaddle.dy = paddleSpeed * dir;
+  } else {
+    rightPaddle.dy = 0;
+  }
+}
 
 function collides(obj1, obj2) {
   return obj1.x < obj2.x + obj2.width &&
@@ -111,7 +125,8 @@ function loop() {
     	ball.resetting = true;
     	if (count > record) { record = count };
     	count = 0;
-    	localStorage.setItem('record',record);
+    	ball.dx = ballSpeed;
+    	//localStorage.setItem('record',record);
     	setTimeout(() => {
 	      ball.resetting = false;
 	      ball.x = canvas.width / 2;
@@ -127,6 +142,9 @@ function loop() {
 	  	ball.dx *= -1;
 	  	ball.x = rightPaddle.x - ball.width;
 		count +=1;
+		if (count % 4 == 0) {
+      ball.dx += Math.sign(ball.dx);
+		}
 	}
 
 	context.fillRect(ball.x, ball.y, ball.width, ball.height);
