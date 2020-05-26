@@ -13,10 +13,11 @@ var Storage_size = localStorage.length;
 
 const block = document.querySelector('.block')
 var interval;
+var resScoreboard = document.getElementById('count');
+var winScore = 10;
+var secretKey = document.getElementById('secret-key');
 var count = 0;
     
-var btnUp = document.getElementById('up');
-var btnDown = document.getElementById('down');
 
 if (Storage_size > 0) { record = localStorage.getItem('record'); } 
 else { localStorage.setItem('record',0); }
@@ -45,10 +46,6 @@ const ball = {
   dy: -ballSpeed
 };
 
-btnUp.addEventListener('mousedown', event => { moveUserPaddle(-1, false) })
-btnUp.addEventListener('mouseup', event => { moveUserPaddle(0, true) })
-btnDown.addEventListener('mousedown', event => { moveUserPaddle(1, false) })
-btnDown.addEventListener('mouseup', event => { moveUserPaddle(0, true) })
 canvas.addEventListener('mousedown', onMouseDown)
 canvas.addEventListener('mouseup', onMouseUp)
 canvas.addEventListener('touchstart', event => { onMouseDown(event.touches[0]) })
@@ -96,6 +93,8 @@ function getCollideCoefficient(obj1, obj2) {
 
 function loop() {
 	requestAnimationFrame(loop);
+
+
 	context.clearRect(0,0,canvas.width,canvas.height);
 	leftPaddle.y += leftPaddle.dy;
 	rightPaddle.y += rightPaddle.dy;
@@ -168,6 +167,9 @@ function loop() {
 	context.font = "20pt Courier";
 	context.fillText('Record: ' + record, 150, 550);
 	context.fillText(count, 450, 550);
+
+  resScoreboard.textContent = Math.max(winScore - count, 0);
+  if (winScore - count <= 0) { secretKey.style.visibility = "visible"; }
 }
 
 requestAnimationFrame(loop);
