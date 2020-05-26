@@ -14,9 +14,17 @@ body {
 	background-color: #333;
 }
 
+.quiz.decorated span {
+    cursor: pointer;
+}
+
 .quiz-failures span {
     color: red;
     display: none;
+}
+
+.ok {
+    color: green;
 }
 
 @media all and (orientation: portrait) and (max-device-width: 1024px) { 

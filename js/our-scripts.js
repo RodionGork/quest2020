@@ -83,15 +83,7 @@ function nextClicked() {
         }
     }
     if (current.hasClass('quiz')) {
-        var ok = current.find('input:checked').parent('span').hasClass('right');
-        if (!ok) {
-            var spans = current.find('.quiz-failures span');
-            if (spans.size() == 0) {
-                spans = $('.dialog-box > .quiz-failures span');
-            }
-            var fails = spans.size();
-            var span = $(spans.get(Math.floor(Math.random() * fails)));
-            span.show(500).delay(1500).hide(500);
+        if (processQuiz(current)) {
             return;
         }
     }
@@ -114,6 +106,27 @@ function nextClicked() {
     window.scrollTo(0,document.body.scrollHeight);
 }
 
+function processQuiz(current) {
+    var ok = current.find('input:checked').parent('span').hasClass('right');
+    if (!ok) {
+        var spans = current.find('.quiz-failures span');
+        if (spans.size() == 0) {
+            spans = $('.dialog-box > .quiz-failures span');
+        }
+        var fails = spans.size();
+        var span = $(spans.get(Math.floor(Math.random() * fails)));
+        span.show(500).delay(1500).hide(500);
+        return true;
+    }
+    var msg = current.attr('ok');
+    if (msg) {
+        $('<span class="ok"/>').text(msg).appendTo(current).hide().show(500);
+        current.removeAttr('ok');
+        return true;
+    }
+    return false;
+}
+
 function switchImage(f) {
     var images = $('.action-space .main-image img');
     if (images.size() < 2) {
@@ -134,7 +147,11 @@ function switchImage(f) {
 function decorateQuiz() {
     var quiz = $(this);
     var group = 'name' + quiz.prevAll().size();
-    quiz.children('span:not(.quiz-failures)').prepend('<input type="radio" name="' + group + '"/>').append('<br/>');
+    var spans = quiz.children('span:not(.quiz-failures)');
+    spans.prepend('<input type="radio" name="' + group + '"/>').append('<br/>');
+    spans.click(function() {
+        $(this).children('input[type=radio]').prop('checked', true);
+    });
     quiz.addClass('decorated');
 }
 
