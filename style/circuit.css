@@ -1,17 +1,36 @@
 html {
-	background-color: #333;
+	background-color: #111;
 }
+.card {
+	background-color: #DFDFDF;
+	padding: 10px 16px;
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, .125);
+	border-radius: .25rem;
+	font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+	font-size: 1.4em;
+	display: flex;
+	flex-direction: row;
+}
+#secret-key { visibility: hidden; }
 
 @media all and (orientation: portrait) and (max-device-width: 1024px) { 
 	body {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column-reverse;
 		justify-content: center;
+		align-items: center;
 	}	
 	img {
 		height: 15vw;
 		width: 15vw;
 		object-fit: cover;
+	}
+	#whole-circuit {
+		margin-top: 3vh;
+		display: flex;
+		flex-direction: row;
+		height: 90vw;
 	}
 	.circuit-space {
 		margin: 15vw 0px;
@@ -30,6 +49,20 @@ html {
 		align-self: flex-end;
 		margin-bottom: 15vw;
 	}
+	#interaction-space {
+		margin-top: 2vh;
+		margin-right: 5vw;
+		margin-left: 5vw;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		font-size: 1.6em;
+	}
+	#secret-key {
+		margin-top: 5vh;
+		font-size: 2.9em;
+		color: #F00;
+	}
 }
 
 @media all and (orientation: landscape) and (max-device-width: 1024px) {
@@ -43,8 +76,13 @@ html {
 		width: 20vh;
 		object-fit: cover;
 	}
+	#whole-circuit {
+		display: flex;
+		flex-direction: row;
+		height: 90vh;
+	}
 	.circuit-space {
-		margin: 10vh 0px;
+		margin-top: 10vh;
 		width: 80vh;
 		height: 80vh;
 		display: flex;
@@ -58,7 +96,21 @@ html {
 	#end {
 		display: flex;
 		align-self: flex-end;
-		margin-bottom: 10vh;
+	}
+	#interaction-space {
+		margin-top: 10vh;
+		margin-left: 0vw;
+		margin-right: 2vw;
+		height: 40vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	#instruction { font-size: 1.2em; }
+	#secret-key {
+		margin-top: 10vh;
+		font-size: 2.2em;
+		color: #F00;
 	}
 }
 
@@ -67,11 +119,17 @@ html {
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
+		height: 90vh;
 	}
 	img {
 		height: 20vh;
 		width: 20vh;
 		object-fit: cover;
+	}
+	#whole-circuit {
+		display: flex;
+		flex-direction: row;
+		height: 90vh;
 	}
 	.circuit-space {
 		margin: 10vh 0px;
@@ -88,6 +146,18 @@ html {
 	#end {
 		display: flex;
 		align-self: flex-end;
-		margin-bottom: 10vh;
+	}
+	#interaction-space {
+		margin-top: 10vh;
+		margin-right: 5vw;
+		height: 40vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	#secret-key {
+		margin-top: 10vh;
+		font-size: 2.4em;
+		color: #F00;
 	}
 }
