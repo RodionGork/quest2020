@@ -3,26 +3,52 @@ html, body {
   	margin: 0;
 	background: black;
 }
+.card {
+	background-color: #DFDFDF;
+	padding: 10px 16px;
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, .125);
+	border-radius: .25rem;
+	font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+	font-size: 1.4em;
+	display: flex;
+	flex-direction: row;
+}
+#state {
+	color: #000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#secret-key {
+	color: #F00;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+	visibility: hidden;
+}
+
 @media all and (orientation: portrait) and (max-device-width: 1024px) { 
 	body {
 	  	display: flex;
 	  	align-items: center;
 	  	justify-content: center;
+	  	flex-direction: column-reverse;
 	}
-	#control-panel {
-		margin-top: 10vh;
+	#game {
+		width: 95vw;
+		height: 100vw;
+	}
+	#interaction-space {
 		display: flex;
-		justify-content: space-around;
+		flex-direction: column;
+		margin-bottom: 6vh;
+		align-items: center;
 	}
-	button {
-		width: 30vw;
-		height: 15vw;
-	}
-	#up {
-		font: 2.9em "Fira Sans", sans-serif;
-	}
-	#down {
-		font: 2.9em "Fira Sans", sans-serif;
+	#state { font-size: 2.7em; }
+	#secret-key {
+		margin-top: 4vh;
+		font-size: 3.2em;
 	}
 }
 
@@ -30,34 +56,23 @@ html, body {
 	body {
 	  	display: flex;
 	  	align-items: center;
-	  	justify-content: center;
-	}
-	#page {
-		width: 90%;
-		display: flex;
-		justify-content: space-around;
-		flex-direction: row;
+	  	justify-content: space-around;
+	  	flex-direction: row-reverse;
 	}
 	#game {
-		width: 90vh;
-		height: 70vh;
+		width: 100vh;
+		height: 90vh;
 	}
-	#control-panel {
+	#interaction-space {
 		display: flex;
-		justify-content: space-around;
-		align-items: center;
 		flex-direction: column;
+		height: 70vh;
+		align-items: center;
 	}
-	button {
-		width: 25vw;
-		height: 15vw;
-	}
-	#up {
-		margin-bottom: 10vh;
-		font: 2.9em "Fira Sans", sans-serif;
-	}
-	#down {
-		font: 2.9em "Fira Sans", sans-serif;
+	#state { font-size: 1.2em; }
+	#secret-key {
+		margin-top: 16vh;
+		font-size: 2.2em;
 	}
 }
 
@@ -66,8 +81,22 @@ html, body {
 	  	display: flex;
 	  	align-items: center;
 	  	justify-content: center;
+	  	flex-direction: row-reverse;
 	}
-	#control-panel { display: none; }
-	#up { display: none; }
-	#down { display: none; }
+	#game {
+		width: 110vh;
+		height: 90vh;
+	}
+	#interaction-space {
+		display: flex;
+		flex-direction: column;
+		height: 50vh;
+		margin-right: 6vw;
+		align-items: center;
+	}
+	#state { font-size: 1.7em; }
+	#secret-key {
+		margin-top: 16vh;
+		font-size: 2.2em;
+	}
 }
