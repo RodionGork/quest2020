@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Змейка</title>
+	<link rel="stylesheet" type="text/css" href="../style/snake.css">
+</head>
+<body>
+	<canvas id="gP" width=200 height=200>HTML 5 не поддерживется</canvas>
+	<div id="interaction-space">
+		<div id="state" class="card">До цели Вам осталось:<div id="count">10</div></div>
+		<div id="control-buttons">
+			<img src="../icons/arrow_top.png" id="btn-up" onclick="btnTop()">
+			<div id="horizontal-control-buttons">
+				<img src="../icons/arrow_left.png" id="btn-left" onclick="btnLeft()">
+				<img src="../icons/arrow_right.png" id="btn-right" onclick="btnRight()">
+			</div>
+			<img src="../icons/arrow_lower.png" id="btn-down" onclick="btnBottom()">
+		</div>
+		<div id="secret-key" class="card">secret-key</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/snake.js"></script>
+</html>

@@ -1,0 +1,161 @@
+html,body {
+	height: 99vh;
+	width: 99vw;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #333;
+}
+canvas {
+	background-color: #AAA;
+	z-index: 5;
+}
+.card {
+	background-color: #DFDFDF;
+	padding: 10px 16px;
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, .125);
+	border-radius: .25rem;
+	font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+	font-size: 1.4em;
+	display: flex;
+	flex-direction: row;
+}
+#control-buttons {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 2vh;
+}
+
+@media all and (orientation: portrait) and (max-device-width: 1024px) { 
+	body { 
+		flex-direction: column-reverse;
+		justify-content: flex-end; 
+		align-items: center;
+	}
+	canvas {
+		width: 90vw;
+		height: 90vw;
+	}
+	img {
+		width: 20vw;
+		height: 20vw;
+	}
+	#btn-right {
+		margin-left: 45vw;	
+	}
+	#interaction-space { 
+		margin-top: 2vh; 
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		font-size: 1.4em;
+	}
+	#control-buttons {
+		position: fixed;
+		bottom: 0px;
+	}
+	#secret-key {
+		position: fixed;
+		background-color: #000;
+		margin-top: 10vh;
+		margin-bottom: 20vh;
+		display: inline-block;
+		z-index: 10;
+		font-size: 3.0em;
+		color: #F00;
+		visibility: hidden;
+	}
+	#state {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 2vh;
+		height: 3vh;
+		width: 90vw;
+		font-size: 1.8em;
+	}
+}
+
+@media all and (orientation: landscape) and (max-device-width: 1024px) { 
+	body { 
+		flex-direction: row;
+		justify-content: center; 
+		align-items: center;
+	}
+	canvas {
+		width: 90vh;
+		height: 90vh;
+	}
+	img {
+		width: 20vh;
+		height: 20vh;
+	}
+	#btn-right {
+		margin-left: 20vh;	
+	}
+	#interaction-space { 
+		margin-left: 5vw;
+		height: 90vh;
+		font-size: 1.4em;
+		display: flex;
+		justify-content: center;
+	}
+	#control-buttons {
+		position: fixed;
+		bottom: 2vh;
+	}
+	#horizontal-control-buttons {
+		height: 20vh;
+	}
+	#secret-key {
+		position: fixed;
+		background-color: #000;
+		margin-top: 5vh;
+		margin-bottom: 20vh;
+		display: inline-block;
+		z-index: 10;
+		font-size: 2.3em;
+		color: #F00;
+		visibility: hidden;
+	}
+	#state {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 2vh;
+		height: 3vh;
+		width: 32vw;
+		font-size: 0.9em;
+	}
+}
+
+@media only screen and (min-width: 1024px) { 
+	body { flex-direction: row-reverse; }
+	canvas {
+		width: 90vh;
+		height: 90vh;
+		margin-left: 10vw;
+	}
+	#interaction-space { 
+		margin-top: 5vh; 
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		font-size: 1.4em;
+	}
+	#control-buttons { display: none; }
+	#secret-key {
+		background-color: #000;
+		margin-top: 5vh;
+		margin-bottom: 20vh;
+		display: inline-block;
+		z-index: 10;
+		font-size: 2.3em;
+		color: #F00;
+		visibility: hidden;
+	}
+}
