@@ -6,31 +6,35 @@
 	<link rel="stylesheet" type="text/css" href="../style/circuit.css">
 </head>
 <body>
-	
-	<img src="../img/circuit_start.png" id="start">
-	<div class="circuit-space">
-		<img src="" id="0" class="circuit-part">
-		<img src="" id="1" class="circuit-part">
-		<img src="" id="2" class="circuit-part">
-		<img src="" id="3" class="circuit-part">
+	<div id="whole-circuit">
+		<img src="../icons/circuit_start.png" id="start">
+		<div class="circuit-space">
+			<img src="" id="0" class="circuit-part">
+			<img src="" id="1" class="circuit-part">
+			<img src="" id="2" class="circuit-part">
+			<img src="" id="3" class="circuit-part">
 
-		<img src="" id="4" class="circuit-part">
-		<img src="" id="5" class="circuit-part">
-		<img src="" id="6" class="circuit-part">
-		<img src="" id="7" class="circuit-part">
+			<img src="" id="4" class="circuit-part">
+			<img src="" id="5" class="circuit-part">
+			<img src="" id="6" class="circuit-part">
+			<img src="" id="7" class="circuit-part">
 
-		<img src="" id="8" class="circuit-part">
-		<img src="" id="9" class="circuit-part">
-		<img src="" id="10" class="circuit-part">
-		<img src="" id="11" class="circuit-part">
+			<img src="" id="8" class="circuit-part">
+			<img src="" id="9" class="circuit-part">
+			<img src="" id="10" class="circuit-part">
+			<img src="" id="11" class="circuit-part">
 
-		<img src="" id="12" class="circuit-part">
-		<img src="" id="13" class="circuit-part">
-		<img src="" id="14" class="circuit-part">
-		<img src="" id="15" class="circuit-part">
+			<img src="" id="12" class="circuit-part">
+			<img src="" id="13" class="circuit-part">
+			<img src="" id="14" class="circuit-part">
+			<img src="" id="15" class="circuit-part">
+		</div>
+		<img src="../icons/circuit_end.png" id="end">
 	</div>
-	<img src="../img/circuit_end.png" id="end">
-
-	<script type="text/javascript" src="../js/circuit.js"></script>
+	<div id="interaction-space">
+      <div id="instruction" class="card">Нажимая на квадратные части схемы, проложите контур от источника электроэнергии (красный) до лампочки (жёлтая)</div>
+      <div id="secret-key" class="card">secret-key</div>
+    </div>
 </body>
+<script type="text/javascript" src="../js/circuit.js"></script>
 </html>

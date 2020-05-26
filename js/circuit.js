@@ -59,7 +59,7 @@ function imageOnClick(e) {
 	var id = e.target.id;
 	rotateAngles[id] = (rotateAngles[id] + 90) % 360;
 	rotateElement(e.target.id);
-	if (isGameOver()) { alert('You won!'); }
+	if (isGameOver()) { document.getElementById('secret-key').style.visibility = 'visible'; }
 }
 
 function rotateElement(id) {
@@ -70,7 +70,7 @@ for (var i = 0; i < types.length; i++) {
 	var elem = document.getElementById(i);
 	var curType = types[i];
 
-	elem.src = curType == 1 ? "../img/circuit_g_part.png" : (curType == 2 ? "../img/circuit_s_part.png" : (curType == 3 ? "../img/circuit_t_part.png" : "../img/circuit_x_part.png")) 
+	elem.src = curType == 1 ? "../icons/circuit_g_part.png" : (curType == 2 ? "../icons/circuit_s_part.png" : (curType == 3 ? "../icons/circuit_t_part.png" : "../icons/circuit_x_part.png")) 
 	elem.onclick = imageOnClick;
 	rotateElement(i);
 }
