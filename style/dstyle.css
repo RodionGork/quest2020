@@ -27,6 +27,10 @@ body {
     color: green;
 }
 
+.dialog-box input[type=text] {
+    display: block;
+}
+
 @media all and (orientation: portrait) and (max-device-width: 1024px) { 
 	.page-space {
 		width: 100%;

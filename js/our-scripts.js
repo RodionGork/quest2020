@@ -76,10 +76,8 @@ function nextClicked() {
     var current = $('.dialog-box p:not(.secret):last');
     var textbox = current.find('input[type=text]');
     if (textbox.size() > 0) {
-        if (textbox.val().toLowerCase() == textbox.attr('data-answer').toLowerCase()) {
-            $('<span/>').text(' ' + textbox.attr('data-ok')).insertAfter(textbox).css('color', 'green');
-        } else {
-            $('<span/>').text(' ' + textbox.attr('data-bad')).insertAfter(textbox).css('color', 'red');
+        if (processTextbox(current, textbox)) {
+            return;
         }
     }
     if (current.hasClass('quiz')) {
@@ -125,6 +123,31 @@ function processQuiz(current) {
         return true;
     }
     return false;
+}
+
+function processTextbox(current, textbox) {
+    if (textbox.val() == '') {
+        return true;
+    }
+    if (textbox.val().toLowerCase() == textbox.attr('data-answer').toLowerCase()) {
+        $('<span/>').text(textbox.attr('data-ok')).insertAfter(textbox).css('color', 'green');
+        return false;
+    }
+    var attempts = textbox.attr('data-attempts');
+    if (!attempts) {
+        $('<span/>').text(textbox.attr('data-bad')).insertAfter(textbox).css('color', 'red');
+        return false;
+    }
+    $('<span/>').text(textbox.attr('data-retry')).insertAfter(textbox).css('color', 'red')
+        .hide(2500);
+    attempts -= 1;
+    if (attempts > 1) {
+        textbox.attr('data-attempts', attempts);
+    } else {
+        textbox.removeAttr('data-attempts');
+    }
+    textbox.val('');
+    return true;
 }
 
 function switchImage(f) {
