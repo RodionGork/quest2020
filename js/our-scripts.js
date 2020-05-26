@@ -24,6 +24,7 @@ function switchPage(url) {
 }
 
 function loadTemplateWithPage(url, nowait) {
+    localStorage['lastPage'] = url;
     var whenLoaded = function(data) {
         var title = data.replace(/[\S\s]*\<title\>([\S\s]*)\<\/title\>[\S\s]*/, '$1')
         var body = data.replace(/[\S\s]*\<body\>([\S\s]+)\<\/body\>[\S\s]*/, '$1');
@@ -141,10 +142,18 @@ function initTemplate() {
     usingTemplate = true;
     $('<div id="preloader" class="secret"></div>').appendTo('body');
     $('.next-button').click(nextClicked);
-    var pageName = 'Metro_Polytech.html';
+    var pageName = localStorage['lastPage'];
     var shortcut = location.href.search('#');
     if (shortcut > -1) {
-        pageName = location.href.substr(shortcut + 1) + '.html';
+        shortcut = location.href.substr(shortcut + 1);
+        if (shortcut != 'reset') {
+            pageName = shortcut + '.html';
+        } else {
+            pageName = undefined;
+        }
+    }
+    if (!pageName) {
+        pageName = 'Metro_Polytech.html';
     }
     loadTemplateWithPage(pageName, true);
 }
