@@ -51,7 +51,7 @@ function isGameOver() {
 				}
 			}
 		}
-		return used[3][3];
+		return used[3][3] && isRightConnectionPossibleById(types.length);
 	} else { return false; }
 }
 
@@ -60,6 +60,7 @@ function imageOnClick(e) {
 	rotateAngles[id] = (rotateAngles[id] + 90) % 360;
 	rotateElement(e.target.id);
 	if (isGameOver()) { document.getElementById('secret-key').style.visibility = 'visible'; }
+	else { document.getElementById('secret-key').style.visibility = 'hidden'; }
 }
 
 function rotateElement(id) {
