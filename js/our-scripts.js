@@ -1,5 +1,7 @@
 var usingTemplate = false;
 
+var pagesSeen = [];
+
 var serverSide = 'https://skripofon.ru/pths-quest.php';
 
 function runTimeLapse() {
@@ -40,7 +42,9 @@ function loadTemplateWithPage(url, nowait) {
         if (nowait) {
             setupLoadedPage(preloader, title, body);
         } else {
-            $('.main-image img:first').fadeTo(700, 0, function() {
+            var img = $('.main-image img:first');
+            var delay = img.attr('lapse');
+            img.fadeTo(delay ? delay * 1 : 750, 0, function() {
                 setupLoadedPage(preloader, title, body);
             });
         }
@@ -95,6 +99,7 @@ function nextClicked() {
             if (hidden.hasClass('quiz')) {
                 hidden.prevAll().remove();
             }
+            hidden.prevAll('.quiz').remove();
         }
         if (hidden.attr('next-slide') === 'true') {
             switchImage(f);
@@ -160,10 +165,12 @@ function switchImage(f) {
     }
     var curImg = $(images[0]);
     var nextImg = $(images[1]);
-    curImg.fadeTo(500, 0.3, function() {
+    var delay = curImg.attr('lapse');
+    curImg.fadeTo(delay ? delay * 1 : 500, 0.3, function() {
         var t = $('.dialog-box p').text();
         curImg.attr('src', (nextImg.attr('src')));
         playAudioIfAny(nextImg);
+        curImg.attr('lapse', nextImg.attr('lapse'));
         nextImg.remove();
         curImg.fadeTo(200, 1.0, () => {if (typeof(f) == 'function') f()});
     });
