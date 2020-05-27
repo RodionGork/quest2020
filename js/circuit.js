@@ -51,7 +51,7 @@ function isGameOver() {
 				}
 			}
 		}
-		return used[3][3] && isRightConnectionPossibleById(types.length);
+		return used[3][3] && isRightConnectionPossibleById(types.length - 1);
 	} else { return false; }
 }
 
