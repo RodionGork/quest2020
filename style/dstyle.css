@@ -35,6 +35,10 @@ body {
     display: block;
 }
 
+.corner-map {
+	display: none;
+}
+
 @media all and (orientation: portrait) and (max-device-width: 1024px) { 
 	.page-space {
 		width: 100%;
@@ -169,7 +173,7 @@ body {
 	}
 	.interaction-space {
 		margin-top: 80vh;
-		margin-bottom: 10vh;
+		margin-bottom: 8vh;
 		z-index: 20;
 	}
 	.swap-active-image-button {
