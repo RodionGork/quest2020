@@ -1,6 +1,9 @@
 var usingTemplate = false;
 
 var pagesSeen = [];
+var pagesSeenCount = 0;
+
+var lastPageChange = 0;
 
 var serverSide = 'https://skripofon.ru/pths-quest.php';
 
@@ -30,6 +33,7 @@ function switchPage(url) {
 function loadTemplateWithPage(url, nowait) {
     localStorage['lastPage'] = url;
     checkPoint(url);
+    lastPageChange = new Date().getTime();
     var whenLoaded = function(data) {
         var title = data.replace(/[\S\s]*\<title\>([\S\s]*)\<\/title\>[\S\s]*/, '$1')
         var body = data.replace(/[\S\s]*\<body\>([\S\s]+)\<\/body\>[\S\s]*/, '$1');
@@ -230,14 +234,20 @@ function queerAuthentication() {
 }
 
 function checkPoint(url) {
+    url = url.replace(/[\.\/]*([^\.]+)(?:\.html)/, '$1');
+    if (!(url in pagesSeen)) {
+        pagesSeen['url'] = true;
+        pagesSeenCount += 1;
+    }
     var userKey = localStorage['userkey'];
     if (typeof(userKey) == 'undefined') {
         return;
     }
+    var delta = new Date().getTime() - lastPageChange;
     $.ajax({
         url: serverSide + '/checkpoint',
         type: 'POST',
-        data: userKey + ' ' + url,
+        data: userKey + ' ' + url + ' ' + delta + ' ' + pagesSeenCount,
         contentType: 'text/plain',
         dataType: 'text',
         success: function(res, status) {
