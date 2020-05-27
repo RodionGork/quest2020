@@ -29,6 +29,18 @@ canvas {
 	justify-content: center;
 	margin-bottom: 2vh;
 }
+img { 
+	width: 100%; 
+	height: 100%; 
+}
+button { 
+	background-color: transparent; 
+	border: 0;
+}
+button, button:after, button:focus { 
+	border: 0; 
+	outline: none;
+}
 
 @media all and (orientation: portrait) and (max-device-width: 1024px) { 
 	body { 
@@ -40,7 +52,7 @@ canvas {
 		width: 90vw;
 		height: 90vw;
 	}
-	img {
+	button {
 		width: 20vw;
 		height: 20vw;
 	}
@@ -90,7 +102,7 @@ canvas {
 		width: 90vh;
 		height: 90vh;
 	}
-	img {
+	button {
 		width: 20vh;
 		height: 20vh;
 	}
