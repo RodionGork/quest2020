@@ -27,6 +27,10 @@ body {
     color: green;
 }
 
+.bad {
+    color: red;
+}
+
 .dialog-box input[type=text] {
     display: block;
 }

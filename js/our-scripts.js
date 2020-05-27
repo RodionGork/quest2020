@@ -1,5 +1,7 @@
 var usingTemplate = false;
 
+var serverSide = 'https://skripofon.ru/pths-quest.php';
+
 function runTimeLapse() {
     var elem = $(this);
     
@@ -25,6 +27,7 @@ function switchPage(url) {
 
 function loadTemplateWithPage(url, nowait) {
     localStorage['lastPage'] = url;
+    checkPoint(url);
     var whenLoaded = function(data) {
         var title = data.replace(/[\S\s]*\<title\>([\S\s]*)\<\/title\>[\S\s]*/, '$1')
         var body = data.replace(/[\S\s]*\<body\>([\S\s]+)\<\/body\>[\S\s]*/, '$1');
@@ -74,7 +77,7 @@ function playAudioIfAny(tag) {
 
 function nextClicked() {
     var current = $('.dialog-box p:not(.secret):last');
-    var textbox = current.find('input[type=text]');
+    var textbox = current.find('input[type=text]:not(.skip)');
     if (textbox.size() > 0) {
         if (processTextbox(current, textbox)) {
             return;
@@ -196,6 +199,43 @@ function initTemplate() {
         pageName = 'Metro_Polytech.html';
     }
     loadTemplateWithPage(pageName, true);
+}
+
+function queerAuthentication() {
+    var code = $('#pass-card').val();
+    $('#auth-wait').show();
+    $.ajax({
+        url: serverSide + '/card',
+        type: 'POST',
+        data: code,
+        contentType: 'text/plain',
+        dataType: 'text',
+        success: function(res, status) {
+            if (res == 'ok') {
+                localStorage['userkey'] = code;
+                $('#auth-bad').hide();
+                $('#auth-ok').show(500);
+            } else {
+                $('#auth-bad').show(500);
+            }
+        }
+    });
+}
+
+function checkPoint(url) {
+    var userKey = localStorage['userkey'];
+    if (typeof(userKey) == 'undefined') {
+        return;
+    }
+    $.ajax({
+        url: serverSide + '/checkpoint',
+        type: 'POST',
+        data: userKey + ' ' + url,
+        contentType: 'text/plain',
+        dataType: 'text',
+        success: function(res, status) {
+        }
+    });
 }
 
 $(function(){

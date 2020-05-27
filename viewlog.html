@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>Template page</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./style/bootstrap.min.css">
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <h1>Перемещения по ФТШ</h1>
+    
+    <div id="log">
+    </div>
+    
+    <script>
+    
+    function updateLog() {
+        $.ajax({
+            url: 'https://skripofon.ru/pths-quest.php/log',
+            dataType: 'text',
+            success: function(res, status) {
+                var lines = res.split('\n');
+                console.log('lines: ' + lines.length);
+                for (var i = lines.length - 1; i >= 0; i--) {
+                    $('<div/>').text(lines[i]).appendTo('#log');
+                }
+            }
+        });
+    }
+    
+    $(function() {
+        updateLog();
+    });
+    </script>
+</body>
+</html>
