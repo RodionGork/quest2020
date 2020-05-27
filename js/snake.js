@@ -9,10 +9,10 @@ var gP = document.getElementById('gP'), //Достаем canvas
 	s = 25; newB(); newA(); //Создаем змейку
 gP.width = 325; //Сохранем четкость изображения, выставив полную ширину экрана
 gP.height = 325; //То же самое, но только с высотой
-btnRight = function() { d = 1; }
-btnBottom = function() { d = 2; }
-btnLeft = function() { d = 3; }
-btnTop = function() { d = 4; }
+btnRight = function() { if (d != 3) d = 1; }
+btnBottom = function() { if (d != 4) d = 2; }
+btnLeft = function() { if (d != 1) d = 3; }
+btnTop = function() { if (d != 2) d = 4; }
 onkeydown = function (e) {
 	var k = e.keyCode;
 	if ([38,39,40,37].indexOf(k) >= 0) 
@@ -23,7 +23,7 @@ onkeydown = function (e) {
 	if (k == 37 && d != 1) d = 3; //Влево
 	if (k == 38 && d != 2) d = 4; //Вверх
 };
-var interval = setInterval(game, 1000/8);
+var interval = setInterval(game, 1000/6);
 var resScoreboard = document.getElementById('count');
 var secretKey = document.getElementById('secret-key');
 var winScore = 10;
