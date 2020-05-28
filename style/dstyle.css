@@ -39,6 +39,10 @@ body {
 	display: none;
 }
 
+.swap-active-image-button {
+	display: none;
+}
+
 @media all and (orientation: portrait) and (max-device-width: 1024px) { 
 	.page-space {
 		width: 100%;
@@ -176,9 +180,6 @@ body {
 		margin-bottom: 8vh;
 		z-index: 20;
 	}
-	.swap-active-image-button {
-		display: none;
-	}
 	.action-title {
 		position: fixed;
 		float: right;
@@ -200,7 +201,7 @@ body {
 		position: relative;
 		margin-top: 40px;
 		margin-bottom: 9px;
-		max-height: 540px;
+		max-height: 70vh;
 		z-index: 5;
 		width: 100%;
 		object-fit: cover;
@@ -220,6 +221,18 @@ body {
 }
 
 @media only screen and (min-width: 1600px) {
+	.action-title {
+		font-size: 2.4em;
+	}
+	.screen-image {
+		max-height: 70vh;
+	}
+	.dialog-box {
+		font-size: 2.0em;
+	}
+	.next-button {
+		font-size: 2.0em;
+	}
 }
 
 .secret {
