@@ -20,7 +20,13 @@
         <script>
         $(function() {
             $('.interaction-space').hide();
+            setTimeout(openWay, 60000);
         });
+        function openWay() {
+            $('.interaction-space').show(500, function() {
+                $('img.ptr').remove();
+            });
+        }
         function ballGame() {
             var evt = event;
             var img = $('.main-image img');
@@ -52,9 +58,7 @@
                     if (balls.length > 0) {
                         img.attr('data-balls', JSON.stringify(balls))
                     } else {
-                        $('.interaction-space').show(500, function() {
-                            $('img.ptr').remove();
-                        });
+                        openWay();
                     }
                 }
             }
