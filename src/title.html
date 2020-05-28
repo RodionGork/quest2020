@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Дорога через парк</title>
+    <link rel="stylesheet" type="text/css" href="../style/styles.css">
+    <script src="../js/jquery.js"></script>
+    <script src="../js/our-scripts.js"></script>
+</head>
+
+<body>
+    <div class="action-space">
+        <img src="../img/bloody-title.png">
+    </div>
+    <div class="interaction-space">
+        <p>Добро пожаловать в наш квест! Нажимайте кнопку "Дальше"...</p>
+        <p>Читайте текст и отвечайте на вопросы (жмите еще раз)</p>
+        <p>Например, как к вам обращаться
+            <input type="text" placeholder="Имя" class="skip" id="username"/>
+            <button onclick="storeName()">Запомнить</button></p>
+        <p>Теперь вы готовы к приключениям... Удачи и повеселиться!</p>
+        <a href="./Metro_Polytech.html" class="next">Дальше</a>
+        <script>
+        function storeName() {
+            var name = $('#username').val();
+            if (name.length < 3) {
+                name = 'Анонимус';
+            }
+            localStorage['username'] = name;
+            $('<span> Отлично, жмите "Дальше"</span>').insertAfter('input.skip');
+        }
+        </script>
+    </div>
+</body>
+
+</html>
