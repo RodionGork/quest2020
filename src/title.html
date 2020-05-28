@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Дорога через парк</title>
+    <title>Маленький Веселый Квест</title>
     <link rel="stylesheet" type="text/css" href="../style/styles.css">
     <script src="../js/jquery.js"></script>
     <script src="../js/our-scripts.js"></script>
@@ -18,7 +18,7 @@
         <p>Читайте текст и отвечайте на вопросы (жмите еще раз)</p>
         <p>Например, как к вам обращаться
             <input type="text" placeholder="Имя" class="skip" id="username"/>
-            <button onclick="storeName()">Запомнить</button></p>
+            <button onclick="storeName()" id="setname">Запомнить</button></p>
         <p>Теперь вы готовы к приключениям... Удачи и повеселиться!</p>
         <a href="./Metro_Polytech.html" class="next">Дальше</a>
         <script>
@@ -28,7 +28,8 @@
                 name = 'Анонимус';
             }
             localStorage['username'] = name;
-            $('<span> Отлично, жмите "Дальше"</span>').insertAfter('input.skip');
+            $('#setname').hide();
+            $('<span> Отлично, ' + name + ', жмите "Дальше"</span>').insertAfter('input.skip');
         }
         </script>
     </div>
