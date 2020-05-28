@@ -1,0 +1,229 @@
+html, body {
+	background-color: #303030;
+	padding: 0px;
+	margin: 0px;
+}
+body {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+a, a:active, a:visited { color: #fff; }
+.card {
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, .125);
+	border-radius: .25rem;
+}
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn-primary {
+	color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+::-webkit-scrollbar { width: 3px; height: 3px;}
+::-webkit-scrollbar-button {  background-color: #666; }
+::-webkit-scrollbar-track {  background-color: #999;}
+::-webkit-scrollbar-track-piece { background-color: #ffffff;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px;}
+::-webkit-scrollbar-corner { background-color: #999;}}
+::-webkit-resizer { background-color: #666;}
+
+.navbar { 
+	background-color: #15191c; 
+}
+#left-hand-bar {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	width: 5vw;
+	height: 100vh;
+}
+#left-hand-bar img {
+	max-width: 100%;
+	max-height: 20vh;
+	margin-bottom: 2vh;
+}
+#left-bar-items {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-direction: column;
+	margin-bottom: 15vh;
+}
+#left-bar-items img {
+	width: 60%;
+	cursor: pointer;
+}
+#left-bar-title {
+	transform: rotate(270deg);
+  	margin: 7vh 0px;
+  	color: #852c98;
+  	display: flex;
+  	direction: center;
+  	align-items: center;
+  	font-size: 1.5em;
+  	color: #fcfdff;
+
+}
+#activities-bar {
+	background-color: #1e2329;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-direction: column;
+	width: 16vw;
+	height: 96vh;
+	padding: 2vh 0vw;
+}
+#activities-bar-title {
+	padding-top: 2vh;
+	margin-left: 1.5vw;
+	font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	margin-bottom: 1vh;
+}
+#activities-bar-title .title-text {
+	color: #fcfdff;
+	font-size: 1.4em;
+}
+#activities-bar-title .additional-info {
+	color: #535a64;
+	font-size: 1.0em;	
+}
+#activities-bar-title hr {
+	width: 100%;
+	border: 0;
+    border-bottom: 1px dashed #ccc;
+    background: #999;
+}
+#activities-list {
+	width: 100%;
+	overflow-y: scroll;
+	background-color: #1e2329;
+}
+.activity-card {
+	color: #fff;
+	padding: 1vh 0.6vw;
+	width: 11vw;
+	height: 19vh;
+	margin: 3vh 2vw;
+	cursor: pointer;
+}
+.activity-card:hover, .activity-card:active {
+	background-color: #2c3339;
+}
+.activity-card strong {
+	color: #fff;
+	vertical-align: 0px;
+}
+.activity-card br {
+	margin-bottom: 10px;
+}
+#participants-and-location { 
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../icons/map_card.jpg');
+	-moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#tests-statistics {
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../icons/tests_card.jpg');	
+	-moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#painting-results {
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../icons/painting_card.jpg');	
+	-moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#displacement-maps {
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../icons/maps_card.jpeg');	
+	-moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#content-space {
+	overflow-y: scroll;
+	width: 64.5vw;
+	height: 100vh;
+	background-color: #1d2228;
+}
+
+#right-hand-bar {
+	width: 14.5vw;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: #1e2329;
+}
+
+#right-hand-top-bar {
+	overflow-y: scroll;
+	width: 84%;
+	height: 55vh;
+	background-color: transparent;
+	padding: 1vh 8%;
+	padding-top: 4vh; 
+	color: #fbfcff;
+}
+
+#right-hand-bottom-bar {
+	overflow-y: scroll;
+	width: 84%;
+	height: 38vh;
+	background-color: transparent;
+	padding: 1vh 8%; 
+	color: #fbfcff;
+}
+#tech-support-cards {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+.tech-support-card {
+	width: 90%;
+	display: flex;
+	flex-direction: row;
+	margin-top: 2vh;
+	background-color: #2c3339;
+	padding: 8px;
+}
+.tech-card-img {
+	height: 6vh;
+	width: 6vh;
+	border-radius: 100px; /* Радиус скругления */
+    box-shadow: 0 0 0 3px black, 0 0 13px #666; /* Параметры теней */
+    object-fit: cover;
+}
+.tech-card-title {
+	margin-left: 1vw;
+}
