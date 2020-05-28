@@ -16,10 +16,21 @@
     <div class="interaction-space">
         <p>Добро пожаловать в наш квест! Нажимайте кнопку "Дальше"...</p>
         <p>Читайте текст и отвечайте на вопросы (жмите еще раз)</p>
-        <p>Например, как к вам обращаться <input type="text" placeholder="Имя" class="skip" id="username"/>
+        <p>Например, как к вам обращаться
+            <input type="text" placeholder="Имя" class="skip" id="username"/>
             <button onclick="storeName()">Запомнить</button></p>
-        <a href="./gates.html" class="next">Дальше</a>
-        
+        <p>Теперь вы готовы к приключениям... Удачи и повеселиться!</p>
+        <a href="./Metro_Polytech.html" class="next">Дальше</a>
+        <script>
+        function storeName() {
+            var name = $('#username').val();
+            if (name.length < 3) {
+                name = 'Анонимус';
+            }
+            localStorage['username'] = name;
+            $('<span> Отлично, жмите "Дальше"</span>').insertAfter('input.skip');
+        }
+        </script>
     </div>
 </body>
 
