@@ -19,7 +19,7 @@ var secretKey = document.getElementById('secret-key');
 var count = 0;
     
 
-if (Storage_size > 0) { record = localStorage.getItem('record'); } 
+if (Storage_size > 0) { record = localStorage.getItem('record') == null ? 0 : localStorage.getItem('record'); } 
 else { localStorage.setItem('record',0); }
 
 const leftPaddle = {
