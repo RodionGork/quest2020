@@ -1,0 +1,75 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>Template page</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./style/bootstrap.min.css">
+    <script src="./js/jquery.js"></script>
+    <style>
+    body { text-align: center; }
+    </style>
+</head>
+
+<body>
+    
+    <h1>&nbsp;</h1>
+    <div>Имя и фамилию латинскими буквами пожалуйста! Класс в формате 2020a, 2020b, 2020v</div>
+    <br/><br/>
+    <input type="text" placeholder="name" id="n1"/>
+    <br/><br/>
+    <input type="text" placeholder="surname" id="n2"/>
+    <br/><br/>
+    <input type="text" placeholder="grade" id="cl"/>
+    <br/><br/>
+    <input type="password" placeholder="password" id="pwd"/>
+    <br/><br/>
+    <button onclick="genkey()">Let's Go!</button>
+    <br/><br/>
+    <div id="result"></div>
+    
+    <script>
+    
+    function genkey() {
+        var ltrs = /^[a-z]+$/i;
+        var n1 = $('#n1').val().toLowerCase();
+        var n2 = $('#n2').val().toLowerCase();
+        var cl = $('#cl').val().toLowerCase();
+        if (n1 == '' || n2 == '' || cl == '') {
+            result('Please fill all fields!');
+            return;
+        }
+        $('#n1').val(n1);
+        if (!ltrs.test(n1)) {
+            result('Name should contain latin letters');
+            return;
+        }
+        $('#n2').val(n2);
+        if (!ltrs.test(n2)) {
+            result('Surame should contain latin letters');
+            return;
+        }
+        if (!/\d\d\d\d[abv]/.test(cl)) {
+            result('Class should be like 1234a/b/v');
+            return;
+        }
+        result('... wait ...');
+        var uname = n1 + '.' + n2 + '.' + cl;
+        $.ajax({
+            url: 'https://skripofon.ru/pths-quest.php/key',
+            data: {'username': uname.toLowerCase(), 'pwd': $('#pwd').val()},
+            dataType: 'text',
+            success: function(res, status) {
+                result(res);
+            }
+        });
+    }
+    
+    function result(txt) {
+        $('#result').text(txt);
+    }
+    
+    </script>
+</body>
+</html>

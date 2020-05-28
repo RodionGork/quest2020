@@ -1,7 +1,5 @@
 var usingTemplate = false;
 
-var pagesSeen = [];
-var pagesSeenCount = 0;
 
 var lastPageChange = 0;
 
@@ -119,6 +117,7 @@ function nextClicked() {
 function processQuiz(current) {
     var ok = current.find('input:checked').parent('span').hasClass('right');
     if (!ok) {
+        localStorage['score'] = localStorage['score'] * 1 - 1;
         var spans = current.find('.quiz-failures span');
         if (spans.size() == 0) {
             spans = $('.dialog-box > .quiz-failures span');
@@ -145,6 +144,7 @@ function processTextbox(current, textbox) {
         $('<span/>').text(textbox.attr('data-ok')).insertAfter(textbox).css('color', 'green');
         return false;
     }
+    localStorage['score'] = localStorage['score'] * 1 - 1;
     var attempts = textbox.attr('data-attempts');
     if (!attempts) {
         $('<span/>').text(textbox.attr('data-bad')).insertAfter(textbox).css('color', 'red');
@@ -201,6 +201,8 @@ function initTemplate() {
     if (shortcut > -1) {
         shortcut = location.href.substr(shortcut + 1);
         if (shortcut != 'reset') {
+            localStorage['pages'] = '{}';
+            localStorage['score'] = 0;
             pageName = shortcut + '.html';
         } else {
             pageName = undefined;
@@ -235,9 +237,11 @@ function queerAuthentication() {
 
 function checkPoint(url) {
     url = url.replace(/[\.\/]*([^\.]+)(?:\.html)/, '$1');
-    if (!(url in pagesSeen)) {
-        pagesSeen[url] = true;
-        pagesSeenCount += 1;
+    var pages = JSON.parse(localStorage['pages']);
+    if (!(url in pages)) {
+        pages[url] = 1;
+        localStorage['score'] = localStorage['score'] * 1 + 5;
+        localStorage['pages'] = JSON.stringify(pages);
     }
     var userKey = localStorage['userkey'];
     if (typeof(userKey) == 'undefined') {
@@ -247,7 +251,7 @@ function checkPoint(url) {
     $.ajax({
         url: serverSide + '/checkpoint',
         type: 'POST',
-        data: userKey + ' ' + url + ' ' + delta + ' ' + pagesSeenCount,
+        data: userKey + ' ' + url + ' ' + delta + ' ' + localStorage['score'],
         contentType: 'text/plain',
         dataType: 'text',
         success: function(res, status) {
@@ -256,6 +260,10 @@ function checkPoint(url) {
 }
 
 $(function(){
+    if (!('pages' in localStorage)) {
+        localStorage['pages'] = '{}';
+        localStorage['score'] = 0;
+    }
     if ($('.page-space').size() == 0) {
     } else {
         initTemplate();
