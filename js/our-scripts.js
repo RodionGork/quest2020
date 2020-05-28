@@ -142,7 +142,9 @@ function processTextbox(current, textbox) {
     if (textbox.val() == '') {
         return true;
     }
-    if (textbox.val().toLowerCase() == textbox.attr('data-answer').toLowerCase()) {
+    var txt = textbox.val().toLowerCase();
+    var expected = textbox.attr('data-answer').toLowerCase();
+    if (hashCode(txt) == expected || txt == expected) {
         $('<span/>').text(textbox.attr('data-ok')).insertAfter(textbox).css('color', 'green');
         return false;
     }
@@ -259,6 +261,17 @@ function checkPoint(url) {
         success: function(res, status) {
         }
     });
+}
+
+function hashCode(s) {
+    var res = 0;
+    for (var i = 0; i < s.length; i++) {
+        res = (res * 2) + s.charCodeAt(i);
+        if (res > 65535) {
+            res = (res + 1) % 65536;
+        }
+    }
+    return res;
 }
 
 $(function(){
