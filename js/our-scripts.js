@@ -236,7 +236,7 @@ function queerAuthentication() {
 function checkPoint(url) {
     url = url.replace(/[\.\/]*([^\.]+)(?:\.html)/, '$1');
     if (!(url in pagesSeen)) {
-        pagesSeen['url'] = true;
+        pagesSeen[url] = true;
         pagesSeenCount += 1;
     }
     var userKey = localStorage['userkey'];
