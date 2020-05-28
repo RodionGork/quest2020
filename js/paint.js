@@ -1,5 +1,9 @@
 var paint = new PaintJS({paint: "#paint"});
 
-function onFinish() {
-	alert('И куды мне это отсылать?)');
+function onFinishPaint() {
+	var base64 = paint.canvas.toDataURL();
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', 'https://skripofon.ru/pths-quest.php/pics?k=denis.tkachev.2021b.1530416');
+	xhr.send(base64);
+	alert('Ok');
 }
