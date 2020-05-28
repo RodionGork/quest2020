@@ -97,6 +97,7 @@ function nextClicked() {
     var hidden = $('.dialog-box p.secret:first');
     if (hidden.size() > 0) {
         var f = function() {
+            playAudioIfAny(hidden);
             hidden.show(300).removeClass('secret');
             if (hidden.hasClass('quiz')) {
                 hidden.prevAll().remove();
