@@ -27,6 +27,10 @@ html, body {
 	align-items: center;	
 	visibility: hidden;
 }
+#explanation {
+	color: #fff;
+	transform: rotate(270deg);
+}
 
 @media all and (orientation: portrait) and (max-device-width: 1024px) { 
 	body {
@@ -49,6 +53,12 @@ html, body {
 	#secret-key {
 		margin-top: 4vh;
 		font-size: 3.2em;
+	}
+	#explanation {
+		color: #fff;
+		transform: rotate(0deg);
+		font-size: 2.0em;
+		align-self: flex-start;
 	}
 }
 
@@ -74,6 +84,14 @@ html, body {
 		margin-top: 16vh;
 		font-size: 2.2em;
 	}
+	#explanation {
+		position: fixed;
+		color: #fff;
+		transform: rotate(270deg);
+		font-size: 1.6em;
+		margin-left: 19vw;
+		margin-top: 20vh;
+	}
 }
 
 @media only screen and (min-width: 1024px) {
@@ -91,12 +109,20 @@ html, body {
 		display: flex;
 		flex-direction: column;
 		height: 50vh;
-		margin-right: 6vw;
+		margin-right: 9vw;
 		align-items: center;
 	}
 	#state { font-size: 1.7em; }
 	#secret-key {
 		margin-top: 16vh;
 		font-size: 2.2em;
+	}
+	#explanation {
+		position: fixed;
+		color: #fff;
+		transform: rotate(270deg);
+		font-size: 2em;
+		margin-left: 19vw;
+		margin-top: 20vh;
 	}
 }
