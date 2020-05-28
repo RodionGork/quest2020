@@ -3,19 +3,54 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Поиск мячика</title>
+    <title>Поиск мячиков: осталось 5</title>
     <link rel="stylesheet" type="text/css" href="../style/styles.css">
 </head>
 
 <body>
     <div class="action-space">
-        <img src="../img/tennis_ball_collect.jpg" alt="" class="screen-image card">
+        <img src="../img/tennis_ball_collect.jpg" alt="" class="screen-image card" onclick="ballGame()"
+            data-ratio="1.5" data-balls="[[20,45],[49,43],[64,71],[70,53],[49,52]]">
     </div>
     <div class="interaction-space">
         <p>Есть! Нашёл!</p>
         <p>*Бах*</p>
         <p>"Ау, больно... Чего ж эти парты такие низкие"</p>
         <a href="./Minarnia_noise.html" class="next">Дальше</a>
+        <script>
+        $(function() {
+            $('.interaction-space').hide();
+        });
+        function ballGame() {
+            var evt = event;
+            var img = $('.main-image img');
+            var imgOffs = img.offset();
+            var x = evt.clientX - imgOffs.left;
+            var y = evt.clientY - imgOffs.top;
+            var w = img.width();
+            var h = img.height();
+            var h0 = w / img.attr('data-ratio');
+            var cutH = (h0 - h) / 2;
+            var xp = x / w;
+            var yp = (y + cutH) / h0;
+            var balls = JSON.parse(img.attr('data-balls'));
+            for (var i = 0; i < balls.length; i++) {
+                var b = balls[i];
+                var d = Math.hypot(b[0] / 100 - xp, b[1] / 100 - yp);
+                if (d < 0.01) {
+                    balls.splice(i, 1);
+                    var title = $('.action-title').text();
+                    title = title.substr(0, title.length - 1) + balls.length;
+                    $('.action-title').text(title);
+                    if (balls.length > 0) {
+                        img.attr('data-balls', JSON.stringify(balls))
+                    } else {
+                        $('.interaction-space').show(500);
+                    }
+                }
+            }
+        }
+        </script>
     </div>
 </body>
 
