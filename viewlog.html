@@ -7,32 +7,100 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="./style/bootstrap.min.css">
     <script src="./js/jquery.js"></script>
+    <style>
+    body { text-align: center; }
+    td { padding: 2px; }
+    table { margin: 0px auto; }
+    </style>
 </head>
 
 <body>
     <h1>Перемещения по ФТШ</h1>
     
-    <div id="log">
-    </div>
+    <h3>Кто впереди</h3>
+    <table id="progress" border="1">
+        <thead>
+            <tr>
+                <th>Участник</th><th>Локация</th><th>Пройдено</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>a</td><td>b</td><td>c</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Недавние передвижения</h3>
+    <table id="log" border="1">
+        <thead>
+            <tr>
+                <th>Участник</th><th>Локация</th><th>Время</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>a</td><td>b</td><td>c</td>
+            </tr>
+        </tbody>
+    </table>
     
     <script>
     
-    function updateLog() {
+    function updateStats() {
         $.ajax({
             url: 'https://skripofon.ru/pths-quest.php/log',
-            dataType: 'text',
-            success: function(res, status) {
-                var lines = res.split('\n');
-                console.log('lines: ' + lines.length);
-                for (var i = lines.length - 1; i >= 0; i--) {
-                    $('<div/>').text(lines[i]).appendTo('#log');
-                }
+            dataType: 'json',
+            success: function(json, status) {
+                updateTop(json.people);
+                updateLog(json.lastMoves);
             }
         });
     }
     
+    function updateLog(moves) {
+        var table = $('#log tbody');
+        var rows = table.find('tr').size();
+        if (rows > moves.length) {
+            table.find('tr:gt(' + moves.length + ')').remove();
+        }
+        for (var i in moves) {
+            var info = moves[i].split(' ');
+            var ts = new Date(info[2] * 1);
+            info[2] = ts.getHours() + ':' + ts.getMinutes() + ':' + ts.getSeconds();
+            var row = (i < rows)
+                ? $(table.find('tr').get(i))
+                : $('<tr><td></td><td></td><td></td></tr>').appendTo(table);
+            row.find('td').each((x, e) => {$(e).text(info[x])});
+        }
+    }
+    
+    function updateTop(users) {
+        var list = [];
+        for (var k in users) {
+            var v = users[k];
+            list.push([k, v.place, v.pages]);
+        }
+        list.sort((a, b) => {
+            return Math.sign(b[2] - a[2]);
+        });
+        var table = $('#progress tbody');
+        var rows = table.find('tr').size();
+        if (rows > list.length) {
+            table.find('tr:gt(' + list.length + ')').remove();
+        }
+        for (var i in list) {
+            var info = list[i];
+            var row = (i < rows)
+                ? $(table.find('tr').get(i))
+                : $('<tr><td></td><td></td><td></td></tr>').appendTo(table);
+            row.find('td').each((x, e) => {$(e).text(info[x])});
+        }
+    }
+    
     $(function() {
-        updateLog();
+        updateStats();
+        //setInterval(updateStats, 15000);
     });
     </script>
 </body>
