@@ -40,7 +40,7 @@
                 var b = balls[i];
                 var d = Math.hypot(b[0] / 100 - xp, b[1] / 100 - yp);
                 if (d < 0.01) {
-                    var arrow = $('<img/>').attr('src', './img/small-arrow.png')
+                    var arrow = $('<img class="ptr"/>').attr('src', './img/small-arrow.png')
                         .css('position', 'absolute').css('z-index', '20')
                         .css('left', x + 'px').css('top', (y + marginTop) + 'px')
                         .appendTo('.main-image');
@@ -51,7 +51,9 @@
                     if (balls.length > 0) {
                         img.attr('data-balls', JSON.stringify(balls))
                     } else {
-                        $('.interaction-space').show(500);
+                        $('.interaction-space').show(500, function() {
+                            $('img.ptr').remove();
+                        });
                     }
                 }
             }
