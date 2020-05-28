@@ -34,10 +34,16 @@
             var xp = x / w;
             var yp = (y + cutH) / h0;
             var balls = JSON.parse(img.attr('data-balls'));
+            var marginTop = img.css('marginTop').replace(/\D/g, '') * 1;
+            console.log('margin: ' + marginTop);
             for (var i = 0; i < balls.length; i++) {
                 var b = balls[i];
                 var d = Math.hypot(b[0] / 100 - xp, b[1] / 100 - yp);
                 if (d < 0.01) {
+                    var arrow = $('<img/>').attr('src', './img/small-arrow.png')
+                        .css('position', 'absolute').css('z-index', '20')
+                        .css('left', x + 'px').css('top', (y + marginTop) + 'px')
+                        .appendTo('.main-image');
                     balls.splice(i, 1);
                     var title = $('.action-title').text();
                     title = title.substr(0, title.length - 1) + balls.length;
