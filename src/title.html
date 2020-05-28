@@ -18,7 +18,7 @@
         <p>Читайте текст и отвечайте на вопросы (жмите еще раз)</p>
         <p>Например, как к вам обращаться
             <input type="text" placeholder="Имя" class="skip" id="username"/>
-            <button onclick="storeName()">Запомнить</button></p>
+            <button onclick="storeName()" id="setname">Запомнить</button></p>
         <p>Теперь вы готовы к приключениям... Удачи и повеселиться!</p>
         <a href="./Metro_Polytech.html" class="next">Дальше</a>
         <script>
@@ -28,6 +28,7 @@
                 name = 'Анонимус';
             }
             localStorage['username'] = name;
+            $('#setname').hide();
             $('<span> Отлично, жмите "Дальше"</span>').insertAfter('input.skip');
         }
         </script>
