@@ -14,7 +14,7 @@ var Storage_size = localStorage.length;
 const block = document.querySelector('.block')
 var interval;
 var resScoreboard = document.getElementById('count');
-var winScore = 10;
+var winScore = 6;
 var secretKey = document.getElementById('secret-key');
 var count = 0;
     
