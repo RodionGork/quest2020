@@ -126,7 +126,7 @@ function processQuiz(current) {
         }
         var fails = spans.size();
         var span = $(spans.get(Math.floor(Math.random() * fails)));
-        span.show(500).delay(1500).hide(500);
+        span.show(500).delay(3000).hide(500);
         return true;
     }
     var msg = current.attr('ok');
@@ -155,7 +155,7 @@ function processTextbox(current, textbox) {
         return false;
     }
     $('<span/>').text(textbox.attr('data-retry')).insertAfter(textbox).css('color', 'red')
-        .hide(2500);
+        .delay(2500).hide(1000);
     attempts -= 1;
     if (attempts > 1) {
         textbox.attr('data-attempts', attempts);

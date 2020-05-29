@@ -16,14 +16,14 @@
     <div class="interaction-space">
         <p>Добро пожаловать в наш квест! Нажимайте кнопку "Дальше" для перехода к следующей части действия.</p>
         <p>Читайте текст, отвечайте на вопросы, проходите мини-игры (жмите еще раз "Далее")</p>
-        <p>Пример заданий с вводимым текстом: как к Вам обращаться?
-	    <br><br>
+        <p>Например: как к Вам обращаться?
+	    <br>
             <input type="text" placeholder="Имя" class="skip" id="username"/>
-	    <br><br>
             <button onclick="storeName()" id="setname">Запомнить</button></p>
         <p>Теперь вы готовы к приключениям... Удачи и повеселиться!</p>
         <a href="./Metro_Polytech.html" class="next">Дальше</a>
         <script>
+        localStorage['username'] = 'Незнакомец';
         function storeName() {
             var name = $('#username').val();
             if (name.length < 3) {
