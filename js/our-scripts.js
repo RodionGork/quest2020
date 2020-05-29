@@ -144,7 +144,7 @@ function processTextbox(current, textbox) {
     }
     var txt = textbox.val().toLowerCase();
     var expected = textbox.attr('data-answer').toLowerCase();
-    if (hashCode(txt) == expected || txt == expected) {
+    if (hashCode(txt) == expected || (txt == expected && !/^\d+$/.test(txt))) {
         $('<span/>').text(textbox.attr('data-ok')).insertAfter(textbox).css('color', 'green');
         return false;
     }
