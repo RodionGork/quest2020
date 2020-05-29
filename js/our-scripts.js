@@ -205,10 +205,10 @@ function initTemplate() {
     if (shortcut > -1) {
         shortcut = location.href.substr(shortcut + 1);
         if (shortcut != 'reset') {
-            localStorage['pages'] = '{}';
-            localStorage['score'] = 0;
             pageName = shortcut + '.html';
         } else {
+            localStorage['pages'] = '{}';
+            localStorage['score'] = 0;
             pageName = undefined;
         }
     }
