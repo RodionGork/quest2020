@@ -174,7 +174,7 @@ function switchImage(f) {
     var curImg = $(images[0]);
     var nextImg = $(images[1]);
     var delay = curImg.attr('lapse');
-    curImg.fadeTo(delay ? delay * 1 : 500, 0.3, function() {
+    curImg.fadeTo(delay ? delay * 1 : 1100, 0.3, function() {
         var t = $('.dialog-box p').text();
         curImg.attr('src', (nextImg.attr('src')));
         playAudioIfAny(nextImg);
