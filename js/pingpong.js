@@ -165,7 +165,7 @@ function loop() {
 
 	context.fillStyle = "#ff0000";
 	context.font = "20pt Courier";
-	context.fillText('Record: ' + record, 150, 550);
+	context.fillText('Record: ' + record == null ? 0 : record, 150, 550);
 	context.fillText(count, 450, 550);
 
   resScoreboard.textContent = Math.max(winScore - count, 0);
