@@ -33,7 +33,7 @@ function loadTemplateWithPage(url, nowait) {
     checkPoint(url);
     lastPageChange = new Date().getTime();
     var whenLoaded = function(data) {
-        data = data.replace(/span .lass..username..[^\<]+/, 'span class="username">' + localStorage['username']);
+        data = data.replace(/span .lass..username..[^\<]+/g, 'span class="username">' + localStorage['username']);
         var title = data.replace(/[\S\s]*\<title\>([\S\s]*)\<\/title\>[\S\s]*/, '$1')
         var body = data.replace(/[\S\s]*\<body\>([\S\s]+)\<\/body\>[\S\s]*/, '$1');
         var preloader = $('#preloader');
