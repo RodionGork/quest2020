@@ -35,6 +35,11 @@ body {
     display: block;
 }
 
+.hint {
+    font-style: italic;
+    color: #555;
+}
+
 .corner-map {
 	display: none;
 }
